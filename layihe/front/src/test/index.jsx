@@ -26,8 +26,20 @@ const Reels = () => {
     useEffect(() => {
         if (reels.length > 0) {
             const sorted = [...reels].sort((a, b) => {
-                const scoreA = a.likes * 0.6 + a.shares * 0.3 - (new Date() - new Date(a.timestamp)) / 100000;
-                const scoreB = b.likes * 0.6 + b.shares * 0.3 - (new Date() - new Date(b.timestamp)) / 100000;
+                const engagementA = a.likes * 0.5 + a.shares * 0.3 + a.comments * 0.2;
+                const engagementB = b.likes * 0.5 + b.shares * 0.3 + b.comments * 0.2;
+            
+                // 2. Freshness (recent content gets a boost)
+                const freshnessA = (Date.now() - new Date(a.timestamp)) / (1000 * 3600 * 24); // Days since posted
+                const freshnessB = (Date.now() - new Date(b.timestamp)) / (1000 * 3600 * 24);
+            
+                // 3. User preferences (e.g., hashtags they follow)
+                const relevanceA = a.hashtags.some(tag => userPreferences.hashtags.includes(tag)) ? 1 : 0;
+                const relevanceB = b.hashtags.some(tag => userPreferences.hashtags.includes(tag)) ? 1 : 0;
+            
+                // Final score
+                const scoreA = engagementA * 0.6 - freshnessA * 0.3 + relevanceA * 0.1;
+                const scoreB = engagementB * 0.6 - freshnessB * 0.3 + relevanceB * 0.1;
                 return scoreB - scoreA;
             });
             setSortedReels(sorted);
