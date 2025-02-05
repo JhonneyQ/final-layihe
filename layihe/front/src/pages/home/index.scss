@@ -1,0 +1,69 @@
+main {
+    background-color: rgb(3, 3, 3);
+    .sec1 {
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)), 
+        url('https://dl.lolwallpapers.net/?id=13630') center/cover no-repeat ;
+        height: 100vh;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+
+
+        .all {
+            display: flex;
+            align-items: center;
+            gap: 150px;
+
+            .par {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+
+                h2 {
+                    color: rgb(158, 122, 65);
+                    font-size: 60px;
+                    width: 650px;
+                }
+
+                p {
+                    color: white;
+                    width: 450px;
+                }
+            }
+
+            .video {
+
+                video {
+                    width: 100%;
+                    border: 3px solid rgb(158, 122, 65);
+                }
+            }
+        }
+    }
+
+    .sec2 {
+        height: 100vh;
+        margin-top: 100px;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+        url('') center/cover no-repeat ;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .photo{
+            
+            position: relative;
+            .img{
+                width: 600px;
+            }
+            .pho{
+                position: absolute;
+                bottom: -0.5%;
+                right: -30px;
+                img {
+                    width: 900px;
+                    
+                }
+            }
+        }
+    }
+}
