@@ -1,8 +1,9 @@
 main {
     background-color: rgb(3, 3, 3);
+
     .sec1 {
-        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)), 
-        url('https://dl.lolwallpapers.net/?id=13630') center/cover no-repeat ;
+        background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)),
+            url('https://dl.lolwallpapers.net/?id=13630') center/cover no-repeat;
         height: 100vh;
         background-size: cover;
         display: flex;
@@ -11,6 +12,7 @@ main {
 
         .all {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             gap: 150px;
 
@@ -32,6 +34,7 @@ main {
             }
 
             .video {
+                width: 400px;
 
                 video {
                     width: 100%;
@@ -44,24 +47,121 @@ main {
     .sec2 {
         height: 100vh;
         margin-top: 100px;
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-        url('') center/cover no-repeat ;
+        background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4)),
+            url('https://images8.alphacoders.com/844/844396.jpg') center/cover no-repeat;
         display: flex;
         justify-content: center;
         align-items: center;
-        .photo{
-            
-            position: relative;
-            .img{
+        position: relative;
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            width: 1200px;
+            position: absolute;
+            bottom: -20%;
+            right: 17%;
+
+            .b {
+                display: flex;
+
+                flex-wrap: wrap;
                 width: 600px;
+
             }
-            .pho{
-                position: absolute;
-                bottom: -0.5%;
-                right: -30px;
-                img {
-                    width: 900px;
+
+            .c {
+                display: flex;
+                flex-wrap: wrap;
+
+            }
+
+            .d {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .e{
+                display: flex;
+                flex-wrap: wrap;
+                .flower{
+                    width: 300px;
+                    height: 600px;
+                    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://media-hosting.imagekit.io//2085023f5b0f4d58/Screenshot%202025-02-06%20184200_LE_upscale_balanced_x4.jpg?Expires=1833461242&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=ypYjv574AEs55FjK7pStWsIktuem3hPdOWcmhOTVr-aLwdLYalJzMmU-8OWVngguztRL0L~fVAtbVzynwuYiw0m3mRGGlWMbIngQoAdjVpvEALK3-5636mb8qHX0rN-NclN8XHjQRHvhd3alwwhVQsmPk1OILR-rmnK-pkyfhYRRug~pg9MaHZmBYlWfD~72YS34C86KMPzMxE~mUe07U473bGZIPaVJntpA1ygi1W0jwmEIS1IT-ZmbxsTMD302MvcrIWsFlBAQlKcbjwbHmdEzbw8iD-SoBzBf5F~aFbXZ39USna11JT0ruyRg8zcANTmATnOX2l2GxnzuTbcssA__') center/cover no-repeat;
                     
+                }
+            }
+            .f{
+                display: flex;
+                .art{
+                    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('https://cdna.artstation.com/p/assets/covers/images/001/013/752/large/scribble-pad-studios-lol-2.jpg?1443926240') center/cover no-repeat;
+                    width: 300px;
+                    height: 600px;
+                }
+                .ryze{
+                    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('https://media-hosting.imagekit.io//7009a49449a948c1/Ryze_20.jpg?Expires=1833463054&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=W7A50VnxRWTravCwZXS5lR8XPaNrQWNCW4XpF17mx5uPXLP~sJUYrkzzcUxLjQJdbfqntLpXWp55837~2TozNhj3gJNhcXBTsAcWH3o4R1mCPrd-Sir-UjzV~RJi9d-SY8WtpksHMbHyFQYfs-GR6fDfRdAz0xEGUhPxa-P4lxjEJ9OFA6B0a3ob2ICD0s9IUto87ixlPof82RMWnOIhCQlG-rSMBDsBCl9gF0LNRujEeVqQojNVXa7pJkm9Nxojo1IAMRLVg20SFuRR7uH1MjzOcOsrH7pGPHIniRJKs3TkQ0hLjXkSuiiGCXzkYnCXeEv3jkLl2CK57tVrKJgPmA__') center/cover no-repeat;
+                    width: 300px;
+                    height: 200px;
+                }
+
+            }
+
+            .emp {
+                height: 600px;
+                width: 300px;
+            }
+
+            .evelyn {
+                height: 600px;
+                width: 300px;
+                background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),
+            url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2Q1OXByaGlyZG54NXhlZDNwM3FuNDJ5NTNkM2g0N3l6Mm9vZXZ6YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KQXOWBCQW8SNyaJKN7/giphy.gif') center/cover no-repeat;
+            }
+
+
+
+            .runes {
+                width: 300px;
+                height: 200px;
+                background:  url('https://media-hosting.imagekit.io//8bb623c48b334ba2/31-319165_runes-reforged-for-league-of-legends-league-of-removebg-preview.png?Expires=1833459451&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=VxSIycqNN5Y0RAvrwm5jIVED600fqTajtyXOfZFKpfCvsA3-sNfKFDXBArrufMj1-3~8UMn9ACWWFQzhpg0A2ZwiYmJzRSVx1pANScnUYs9IqkOgr7NjIDPzGbKntoWyV0XgMr0HViEMsx12yLpFFZDMYYudqCKqO4zDCw1O2zGOMx3LaR0z1x23s-29mjKoNvmzjDinrd7GJDKVmnixL5zANhgaEQFhMZWOkPKpgFx1zzKZtQgzqhDHisjXbvTfHJOwmejAV36j6g3hy8dUtdtGegpgm7etRGcVnhBrT-PVbADkdTxpOfLR8SI1AIX-OZvtNf64DfQJ-Mov07Pm5Q__') center/cover no-repeat;
+                filter: drop-shadow(0 0 20px rgb(158, 122, 65));
+            }
+
+            .emp2 {
+                height: 600px;
+                width: 300px;
+            }
+
+            .rune {
+                background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://cf-vectorizer-live.s3.amazonaws.com/vectorized/2sffpKlr7mdtt6ZIfZY7kH0k9Rj/2sffxguWIa3b52gkmsDKds73nnk.svg') center/cover no-repeat;
+                width: 300px;
+                height: 700px;
+                
+            }
+
+
+
+            .photo {
+
+                position: relative;
+
+                .img {
+
+                    width: 600px;
+                    height: 300px;
+                }
+
+                .pho {
+                    position: absolute;
+                    bottom: 1%;
+                    right: -20px;
+
+                    img {
+                        width: 850px;
+                        filter: brightness(85%);
+
+
+                    }
                 }
             }
         }
