@@ -27,7 +27,7 @@ const Cheader = () => {
                         </li>
                     </ul>
                 </nav>
-                <div class="play-button">Play</div>
+                <a class="play-button" href="https://www.leagueoflegends.com/tr-tr/" >Play</a>
 
             </div>
         </header>
