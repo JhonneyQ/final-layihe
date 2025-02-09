@@ -1,0 +1,36 @@
+footer{
+    background-color: black;
+    text-align: center;
+    border-top: 2px solid rgb(158, 122, 65);
+    .riot{
+        width: 8%;
+        padding: 20px;
+        margin-top: 50px;
+    }
+    nav{
+        padding: 30px;
+        ul{
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            li{
+                a{
+                    color: rgb(158, 122, 65);
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    p{
+        color: rgb(100, 100, 100);
+        width: 50%;
+        margin: 0 auto;
+        padding: 30px;
+    }
+    .icons{
+        padding: 20px;
+        img{
+            width: 11%;
+        }
+    }
+}

@@ -75,7 +75,7 @@ const Home = () => {
                             </div>
                             <div className='flower'>
                                 <div className='par'>
-                                    <p>From the depths of the aulderwood, Ivern smiled at the gesture. the shagyak herd would be proud</p>
+                                    <p>From the depths of the aulderwood, Ivern smiled at the Aslan gesture. the shagyak herd would be proud</p>
                                     <h3>READ MORE</h3>
 
                                 </div>
@@ -118,13 +118,13 @@ const Home = () => {
 
                         <div className="cards">
                             <label className="card" htmlFor="item-1" id="song-1">
-                                <img src="https://images.unsplash.com/photo-1530651788726-1dbf58eeef1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=882&q=80" alt="esports" />
+                                <img src="https://helios-i.mashable.com/imagery/articles/07DaWyZasiS6XPNWIWpTtKV/images-1.fill.size_2000x1125.v1611682944.jpg" alt="esports" />
                             </label>
                             <label className="card" htmlFor="item-2" id="song-2">
-                                <img src="https://images.unsplash.com/photo-1559386484-97dfc0e15539?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80" alt="esports" />
+                                <img src="https://cdna.artstation.com/p/assets/images/images/007/440/810/large/keita-okada-image01.jpg?1506152249" alt="esports" />
                             </label>
                             <label className="card" htmlFor="item-3" id="song-3">
-                                <img src="https://images.unsplash.com/photo-1533461502717-83546f485d24?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="esports" />
+                                <img src="https://resources.esportsinsider.com/esportsinsider/2025/01/Screenshot-2025-01-16-104037.png" alt="esports" />
                             </label>
                         </div>
                     </div>

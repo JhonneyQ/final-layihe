@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 
 main {
     background-color: rgb(3, 3, 3);
@@ -67,7 +68,7 @@ main {
 
             position: absolute;
             top: -30%;
-            left: 3%;
+            left: 7%;
 
             .b {
                 display: flex;
@@ -162,6 +163,7 @@ main {
                         display: flex;
                         flex-direction: column;
                         gap: 10px;
+                        margin-top: 30px;
 
                         h3 {
                             color: rgb(158, 122, 65);
@@ -312,16 +314,22 @@ main {
         .container {
             max-width: 900px;
             width: 100%;
+            margin-top: 80px;
         }
 
         .par {
             margin-bottom: 20px;
+            text-align: center;
+            padding: 30px;
 
             h2 {
                 font-size: 2.5rem;
                 margin-bottom: 10px;
                 text-transform: uppercase;
                 letter-spacing: 2px;
+                color: rgb(158, 122, 65);
+                
+                
             }
 
             p {
@@ -329,6 +337,7 @@ main {
                 max-width: 600px;
                 margin: 0 auto;
                 line-height: 1.6;
+                color: rgb(170, 170, 170);
             }
         }
 
@@ -350,12 +359,13 @@ main {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                
             }
 
             .card {
                 position: absolute;
-                width: 60%;
-                height: 100%;
+                width: 80%;
+                height: 80%;
                 transition: transform 0.4s ease, opacity 0.4s ease;
                 cursor: pointer;
                 border-radius: 10px;
