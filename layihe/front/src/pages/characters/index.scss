@@ -113,10 +113,10 @@
 
             .card {
                 background-color: transparent;
-                width: 280px;
+                max-width: 280px;
                 border: 1px solid rgba(148, 148, 148, 0.562);
                 overflow: hidden;
-                height: 165px;
+                max-height: 165px;
                 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
                 transition: all 300ms;
                 position: relative;

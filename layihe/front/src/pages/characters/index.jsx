@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./index.scss"
 import axios from "axios"
+import { Link } from 'react-router-dom'
 
 const Characters = () => {
   const [champs, setChamps] = useState([])
@@ -57,7 +58,7 @@ const Characters = () => {
           <div className='champs'>
 
             {champs && champs.map((p) => (
-              <button className='card'>
+              <Link to={`/chardetails/${p._id}`} className='card' >
                 <div className='over'>
                   <img src={p.icon} />
                   <div className='dark'>
@@ -67,7 +68,7 @@ const Characters = () => {
                     <p>{p.name}</p>
                   </div>
                 </div>
-              </button>
+              </Link>
             ))}
           </div>
         </div>

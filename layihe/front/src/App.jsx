@@ -24,7 +24,7 @@ function App() {
             <Route path='about' element={<About/>}/>
             <Route path='profile' element={<Profile/>}/>
             <Route path='moments' element={<Moments/>}/>
-            <Route path='chardetails' element={<CharDetails/>}/>
+            <Route path='chardetails/:id' element={<CharDetails/>}/>
         </Route>
       </Routes>
     </>
