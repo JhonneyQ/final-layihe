@@ -1,10 +1,7 @@
-
-
-
 .ch {
     height: 100vh;
 
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)),
         url('https://www.wallpaperflare.com/static/691/284/927/league-legends-champions-wallpaper.jpg') center/cover no-repeat;
     padding-top: 90px;
 
@@ -14,20 +11,23 @@
         gap: 30px;
 
         .side {
-            background-color: rgb(20, 24, 32);
+            padding-top: 100px;
+            // background-color: rgb(20, 24, 32);
             width: 250px;
             padding: 40px;
             height: 700px;
-            border: 2px solid rgb(63, 57, 46);
+            // border: 2px solid rgb(63, 57, 46);
 
-            .search {
-                
+            .filt{
+                display: flex;
+                gap: 10px;
             }
+            
 
             .filtt {
-               
+                margin-top: 30px;
                 overflow: hidden;
-               
+
                 svg {
                     width: 200px;
                     // transform: translate3d(-125px, 0, 0);
@@ -54,7 +54,7 @@
 
                     &:valid,
                     &:focus {
-                        
+
                         cursor: auto;
 
                         +svg {
@@ -65,7 +65,7 @@
                     &:focus {
                         cursor: auto;
                         outline: none;
-                        
+
 
                         +svg {
                             .path {
@@ -76,7 +76,8 @@
                     }
 
                 }
-                .path{
+
+                .path {
                     stroke-dasharray: 360, 1324 - 360;
                     stroke-dashoffset: 0;
                     stroke: rgb(82, 54, 54);
@@ -89,14 +90,15 @@
 
 
 
-            .check{
+            .check {
                 margin-top: 60px;
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
+
                 .filt {
                     color: rgb(133, 132, 132);
-    
+
                 }
             }
         }
@@ -108,7 +110,7 @@
             align-items: center;
             gap: 10px;
             height: 700px;
-            background-color: rgba(36, 41, 49, 0.849);
+            // background-color: rgba(36, 41, 49, 0.849);
 
 
             .card {
