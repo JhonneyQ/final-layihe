@@ -1,0 +1,107 @@
+.details {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+
+    .card {
+        background-color: rgba(7, 7, 7, 0.5);
+        padding: 20px;
+        width: 1200px;
+        position: relative;
+        display: flex;
+
+
+
+        .par {
+            color: white;
+            display: flex;
+            justify-content: space-between;
+
+
+            .first {
+                width: 500px;
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+
+                p {
+                    color: rgb(158, 122, 65);
+                    font-weight: bold;
+                    font-size: 20px;
+                }
+
+                span {
+                    color: rgb(97, 97, 97);
+                }
+
+                h2 {
+                    font-size: 80px;
+                }
+
+                .about {
+                    display: flex;
+
+                    .skill {
+                        display: flex;
+                        gap: 10px;
+                        justify-content: center;
+                        align-items: center;
+
+                        img {
+                            width: 10%;
+                        }
+                    }
+
+                    .stat {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        .hp {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+
+                            p {
+                                color: white;
+                                font-size: 15px;
+                            }
+                        }
+
+                        .armor {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+
+                            p {
+                                color: white;
+                                font-size: 15px;
+                            }
+                        }
+
+                        .mr {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+
+                            p {
+                                color: white;
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .pic {
+
+
+            img {
+                position: absolute;
+                top: -40%;
+                right: -13%;
+                width: 73%;
+            }
+        }
+    }
+}

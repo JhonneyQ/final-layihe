@@ -21,6 +21,13 @@
             .filt{
                 display: flex;
                 gap: 10px;
+                .par{
+                    input{
+                       &:checked{
+                        border-color: blue;
+                       }
+                    }
+                }
             }
             
 

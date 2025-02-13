@@ -14,72 +14,76 @@ header {
     align-items: center;
 
     .container {
-        display: flex;
-        gap: 300px;
+      
+        
 
-        .icon {
-            color: rgb(158, 122, 65);
-            font-size: 25px;
-        }
-
-        /* Play Button Container */
-        .play-button {
-            width: 60px;
-            /* Width of the button */
-            height: 20px;
-            /* Height of the button */
-            background-color: #1e90ff;
-            /* Bright blue color */
-            border: 2px solid #1e90ff;
-            /* Border color */
-            /* Slightly rounded corners */
+        .all{
             display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            font-family: 'Helvetica', sans-serif;
-            /* Font style */
-            font-size: 12px;
-            /* Font size */
-            font-weight: bold;
-            /* Bold text */
-            color: white;
-            /* Text color */
-            text-transform: uppercase;
-            /* Makes the text uppercase */
-        }
-
-        /* Hover Effect */
-        .play-button:hover {
-            background-color: #0077cc;
-            /* Darker blue on hover */
-            transform: scale(1.05);
-            /* Slightly enlarges the button */
-        }
-
-        /* Active Effect (when clicked) */
-        .play-button:active {
-            background-color: #005bb5;
-            /* Even darker blue */
-            transform: scale(0.95);
-            /* Slightly shrinks the button */
-        }
-
-        nav {
-
-            ul {
+            gap: 200px;
+            .icon {
+                color: rgb(158, 122, 65);
+                font-size: 25px;
+            }
+    
+            /* Play Button Container */
+            .play-button {
+                width: 60px;
+                /* Width of the button */
+                height: 20px;
+                /* Height of the button */
+                background-color: #1e90ff;
+                /* Bright blue color */
+                border: 2px solid #1e90ff;
+                /* Border color */
+                /* Slightly rounded corners */
                 display: flex;
-                justify-content: center;
                 align-items: center;
-                gap: 20px;
-
-                li {
-                    a {
-                        color: rgb(158, 122, 65);
-                        font-family: "Roboto", serif;
-                        font-weight: bold;
-                        font-size: 15px;
+                justify-content: center;
+                cursor: pointer;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+                font-family: 'Helvetica', sans-serif;
+                /* Font style */
+                font-size: 12px;
+                /* Font size */
+                font-weight: bold;
+                /* Bold text */
+                color: white;
+                /* Text color */
+                text-transform: uppercase;
+                /* Makes the text uppercase */
+            }
+    
+            /* Hover Effect */
+            .play-button:hover {
+                background-color: #0077cc;
+                /* Darker blue on hover */
+                transform: scale(1.05);
+                /* Slightly enlarges the button */
+            }
+    
+            /* Active Effect (when clicked) */
+            .play-button:active {
+                background-color: #005bb5;
+                /* Even darker blue */
+                transform: scale(0.95);
+                /* Slightly shrinks the button */
+            }
+    
+            nav {
+    
+                ul {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 20px;
+    
+                    li {
+                        a {
+                            color: rgb(158, 122, 65);
+                            font-family: "Roboto", serif;
+                            font-weight: bold;
+                            font-size: 15px;
+                        }
                     }
                 }
             }
