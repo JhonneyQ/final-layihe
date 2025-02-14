@@ -1,0 +1,23 @@
+.profile{
+    padding-top: 70px;
+    height: 100vh;
+    .all{
+        .prof{
+            display: flex;
+            justify-content: space-around;
+            padding: 30px;
+        }
+        .add{
+            padding: 50px;
+        }
+        .cardSelect{
+            display: flex;
+            justify-content: space-around;
+        }
+        .line{
+            margin: 20px;
+            height: 5px;
+            background-color: rgb(158, 122, 65) ;
+        }
+    }
+}

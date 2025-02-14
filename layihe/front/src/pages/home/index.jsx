@@ -124,7 +124,7 @@ const Home = () => {
                                 <img src="https://cdna.artstation.com/p/assets/images/images/007/440/810/large/keita-okada-image01.jpg?1506152249" alt="esports" />
                             </label>
                             <label className="card" htmlFor="item-3" id="song-3">
-                                <img src="https://resources.esportsinsider.com/esportsinsider/2025/01/Screenshot-2025-01-16-104037.png" alt="esports" />
+                                <img src="https://newsroom.cisco.com/c/dam/r/newsroom/en/us/migrated-assets/tn-cisco_riot_partnergraphic_1200x628-copy-200820-034821-jpg-2093502-1-0.jpg" alt="esports" />
                             </label>
                         </div>
                     </div>
