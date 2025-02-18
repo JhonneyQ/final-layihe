@@ -11,6 +11,8 @@ import Profile from './pages/profile'
 import Moments from './pages/reels'
 import CharDetails from './pages/characterDetails'
 import Home from './pages/home'
+import Login from './pages/login'
+import Register from './pages/register'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -25,6 +27,8 @@ function App() {
             <Route path='profile' element={<Profile/>}/>
             <Route path='moments' element={<Moments/>}/>
             <Route path='chardetails/:id' element={<CharDetails/>}/>
+            <Route path='login' element={<Login/>}/>
+            <Route path='register' element={<Register/>}/>
         </Route>
       </Routes>
     </>
