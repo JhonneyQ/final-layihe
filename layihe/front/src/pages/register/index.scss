@@ -1,0 +1,122 @@
+.register {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)),
+        url('https://preview.redd.it/in73r6sbixz31.png?width=4096&format=png&auto=webp&s=810fa4aef8f17b2ccf3ca4c18601eb731904d37e') center/cover no-repeat;
+
+    .card {
+        // background-color: rgba(61, 61, 61, 0.438);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .aur {
+            position: absolute;
+
+            img {
+                width: 70%;
+            }
+        }
+
+        .par {
+            background-color: rgb(20, 17, 36);
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+
+            h3 {
+                color: white;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                color: white;
+
+                .inp {
+                    display: flex;
+                    flex-direction: column;
+                    color: rgb(174, 175, 202);
+                    gap: 5px;
+                    position: relative;
+
+                    input {
+                        background-color: #303245;
+                        border-radius: 12px;
+                        border: 0;
+                        box-sizing: border-box;
+                        color: #eee;
+                        font-size: 18px;
+                        outline: 0;
+                        padding: 15px;
+                    
+
+                        &:focus~.cut,
+                        &:not(:placeholder-shown)~.cut {
+                            transform: translateY(8px);
+                        }
+
+                        &:focus~.placeholder,
+                        &:not(:placeholder-shown)~.placeholder {
+                            transform: translateY(-30px) translateX(10px) scale(0.75);
+                        }
+
+                        &:not(:placeholder-shown)~.placeholder {
+                            color: #808097;
+                        }
+
+                        &:focus~.placeholder {
+                            color: #dc2f55;
+                        }
+                    }
+
+                    .cut {
+                        background-color: #15172b;
+                        border-radius: 10px;
+                        height: 20px;
+                        left: 20px;
+                        position: absolute;
+                        top: -20px;
+                        transform: translateY(0);
+                        transition: transform 200ms;
+                        width: 76px;
+
+                        &.cut-short {
+                            width: 50px;
+                        }
+                    }
+
+                    .placeholder {
+                        color: #65657b;
+                        font-family: sans-serif;
+                        left: 20px;
+                        line-height: 14px;
+                        pointer-events: none;
+                        position: absolute;
+                        transform-origin: 0 50%;
+                        transition: transform 200ms, color 200ms;
+                        top: 20px;
+                    }
+                }
+
+                button {
+                    background-color: rgb(25, 175, 209);
+                    border: none;
+                    color: white;
+                    padding: 10px;
+                }
+            }
+
+        }
+    }
+
+}
