@@ -5,6 +5,26 @@
     background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)),
         url('https://preview.redd.it/in73r6sbixz31.png?width=4096&format=png&auto=webp&s=810fa4aef8f17b2ccf3ca4c18601eb731904d37e') center/cover no-repeat;
 
+
+    
+    .alll{
+        display: flex;
+       
+    }
+    .pic{
+        width: 400px;
+        height: 745px;
+        background-image: url("https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/8bc08f0cfa588ed0d76ae86156ddf07a85a64f7d-1920x1080.jpg");
+        background-size: cover;
+        background-position: center;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        img{
+            width: 100%;
+        }
+        // background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)),
+        // url('https://displays.riotgames.com/static/content-original-championillustrations-group-slashes-9828cf13cecf88fb9f21ee17afa6874e.jpg') center/cover no-repeat;
+    }
     .card {
         // background-color: rgba(61, 61, 61, 0.438);
         display: flex;
@@ -22,18 +42,18 @@
         .par {
             background-color: rgb(20, 17, 36);
             position: relative;
-            width: 300px;
-            height: 300px;
+            padding: 50px 70px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 30px;
+            gap: 70px;
             backdrop-filter: blur(10px);
-            border-radius: 10px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
 
             h3 {
-                color: white;
+                color: rgb(212, 212, 212);
             }
 
             form {
@@ -41,6 +61,14 @@
                 flex-direction: column;
                 gap: 30px;
                 color: white;
+
+                .agree{
+                    width: 300px;
+                    display: flex;
+                    align-items: start;
+                    gap: 10px;
+                    color: rgb(187, 187, 187);
+                }
 
                 .inp {
                     display: flex;
@@ -113,6 +141,25 @@
                     border: none;
                     color: white;
                     padding: 10px;
+                    margin-top: 30px;
+                }
+
+                .social{
+                    text-align: center;
+                    color: rgb(187, 187, 187);
+                    h3{
+                        color: rgb(187, 187, 187);  
+                    }
+                    .icons{
+                        font-size: 40px;
+                        display: flex;
+                        gap: 20px;
+                        justify-content: center;
+                        padding: 30px;
+                        a{
+                            color: rgb(187, 187, 187); 
+                        }
+                    }
                 }
             }
 

@@ -28,8 +28,9 @@ function App() {
             <Route path='moments' element={<Moments/>}/>
             <Route path='chardetails/:id' element={<CharDetails/>}/>
             <Route path='login' element={<Login/>}/>
-            <Route path='register' element={<Register/>}/>
+            
         </Route>
+        <Route path='/register' element={<Register/>}/>
       </Routes>
     </>
   )
