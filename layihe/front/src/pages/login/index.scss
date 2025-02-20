@@ -1,4 +1,4 @@
-.register {
+.login {
     height: 100vh;
     display: flex;
     align-items: center;
@@ -6,13 +6,12 @@
         url('https://preview.redd.it/in73r6sbixz31.png?width=4096&format=png&auto=webp&s=810fa4aef8f17b2ccf3ca4c18601eb731904d37e') center/cover no-repeat;
 
 
-
-    .alll {
+    
+    .alll{
         display: flex;
-
+       
     }
-
-    .pic {
+    .pic{
         width: 400px;
         height: 745px;
         background-image: url("https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/8bc08f0cfa588ed0d76ae86156ddf07a85a64f7d-1920x1080.jpg");
@@ -20,15 +19,12 @@
         background-position: center;
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
-
-        img {
+        img{
             width: 100%;
         }
-
         // background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)),
         // url('https://displays.riotgames.com/static/content-original-championillustrations-group-slashes-9828cf13cecf88fb9f21ee17afa6874e.jpg') center/cover no-repeat;
     }
-
     .card {
         // background-color: rgba(61, 61, 61, 0.438);
         display: flex;
@@ -46,7 +42,6 @@
         .par {
             background-color: rgb(20, 17, 36);
             position: relative;
-            padding: 50px 70px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -55,10 +50,12 @@
             backdrop-filter: blur(10px);
             border-top-right-radius: 20px;
             border-bottom-right-radius: 20px;
-
+            padding: 50px 70px;
+            
             .pa{
                 display: flex;
                 gap: 10px;
+                align-items: center;
                 p{
                     color: white;
                 }
@@ -66,6 +63,7 @@
                     color: rgb(126, 126, 126);
                 }
             }
+            
 
             h3 {
                 color: rgb(212, 212, 212);
@@ -77,7 +75,7 @@
                 gap: 30px;
                 color: white;
 
-                .agree {
+                .agree{
                     width: 300px;
                     display: flex;
                     align-items: start;
@@ -101,7 +99,7 @@
                         font-size: 18px;
                         outline: 0;
                         padding: 15px;
-
+                    
 
                         &:focus~.cut,
                         &:not(:placeholder-shown)~.cut {
@@ -151,34 +149,29 @@
                     }
                 }
 
-
                 .but {
                     background-color: rgb(25, 175, 209);
                     border: none;
                     color: white;
-                    padding: 10px 100px;
+                    padding: 10px;
                     margin-top: 30px;
                     text-align: center;
                 }
 
-
-                .social {
+                .social{
                     text-align: center;
                     color: rgb(187, 187, 187);
-
-                    h3 {
-                        color: rgb(187, 187, 187);
+                    h3{
+                        color: rgb(187, 187, 187);  
                     }
-
-                    .icons {
+                    .icons{
                         font-size: 40px;
                         display: flex;
                         gap: 20px;
                         justify-content: center;
                         padding: 30px;
-
-                        a {
-                            color: rgb(187, 187, 187);
+                        a{
+                            color: rgb(187, 187, 187); 
                         }
                     }
                 }

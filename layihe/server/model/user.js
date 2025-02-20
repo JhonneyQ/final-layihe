@@ -8,7 +8,7 @@ const userSchema = new Schema({
     name: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    image: { type: String, default: "aaaaa"},
+    image: { type: String, default: "https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg"},
     bio: { type: String, default: "Hello!" },
     reels: [{ type: mongoose.Schema.Types.ObjectId, ref: 'reels' }] // References reels
 

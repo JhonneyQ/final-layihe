@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Reels from './test'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Client from './components/client'
 import Characters from './pages/characters'
 import About from './pages/about_us'
@@ -13,9 +13,13 @@ import CharDetails from './pages/characterDetails'
 import Home from './pages/home'
 import Login from './pages/login'
 import Register from './pages/register'
+import { AuthContext } from './components/authContext'
+import Chat from './pages/Chat'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  const {user} = useContext(AuthContext)
 
   return (
     <>
@@ -27,10 +31,11 @@ function App() {
             <Route path='profile' element={<Profile/>}/>
             <Route path='moments' element={<Moments/>}/>
             <Route path='chardetails/:id' element={<CharDetails/>}/>
-            <Route path='login' element={<Login/>}/>
+            <Route path='chat' element={<Chat/>}/>
             
         </Route>
-        <Route path='/register' element={<Register/>}/>
+        <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
+        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
       </Routes>
     </>
   )
