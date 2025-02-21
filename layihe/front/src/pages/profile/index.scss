@@ -9,7 +9,7 @@
         right: 0;
         height: 100vh;
         z-index: 100;
-        background-color: #202020;
+        background-color: rgb(158, 122, 65);
         overflow: hidden;
         transition: width 0.3s ease;
         cursor: pointer;
@@ -42,7 +42,7 @@
             display: block;
             top: -35px;
             left: 35%;
-            padding: 0 15px 0 25px;
+            padding: 0 10px 0 25px;
             transition: all 0.3s ease;
             margin: 0 10px 0 25px;
             text-decoration: none;
@@ -135,6 +135,13 @@
             margin: 20px;
             height: 5px;
             background-color: rgb(158, 122, 65);
+        }
+
+        .chat{
+            .chatt{
+                display: flex;
+                gap: 30px;
+            }
         }
     }
 }

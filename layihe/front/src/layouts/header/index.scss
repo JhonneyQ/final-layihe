@@ -10,21 +10,20 @@ header {
     position: fixed;
     z-index: 10;
     width: 100%;
-    display: flex;
-    align-items: center;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
 
-    .container {
-      
-        
-
-        .all{
+        .all {
             display: flex;
-            gap: 200px;
+            justify-content: space-between;
+            margin-top: 20px;
+
             .icon {
                 color: rgb(187, 145, 77);
                 font-size: 25px;
             }
-    
+
             /* Play Button Container */
             .play-button {
                 width: 60px;
@@ -50,33 +49,31 @@ header {
                 color: white;
                 /* Text color */
                 text-transform: uppercase;
+
                 /* Makes the text uppercase */
+                &:hover {
+                    background-color: #0077cc;
+                    /* Darker blue on hover */
+                    transform: scale(1.05);
+                }
+
+                &:active {
+                    background-color: #005bb5;
+                    /* Even darker blue */
+                    transform: scale(0.95);
+                }
             }
-    
-            /* Hover Effect */
-            .play-button:hover {
-                background-color: #0077cc;
-                /* Darker blue on hover */
-                transform: scale(1.05);
-                /* Slightly enlarges the button */
-            }
-    
-            /* Active Effect (when clicked) */
-            .play-button:active {
-                background-color: #005bb5;
-                /* Even darker blue */
-                transform: scale(0.95);
-                /* Slightly shrinks the button */
-            }
-    
+
+        
+
             nav {
-    
+
                 ul {
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     gap: 20px;
-    
+
                     li {
                         a {
                             color: rgb(187, 145, 77);
@@ -92,4 +89,3 @@ header {
 
 
 
-}

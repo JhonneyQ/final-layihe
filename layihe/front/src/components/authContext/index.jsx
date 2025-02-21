@@ -58,7 +58,7 @@ const AuthProvider = ({ children }) => {
     },
     [registerInfo, navigate]
   );
-  console.log(user);
+  
   
 
   const loginUser = useCallback(

@@ -3,6 +3,13 @@ import "./index.scss";
 import { AuthContext } from "../../components/authContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { IoMdSettings } from "react-icons/io";
+import { IoIosExit } from "react-icons/io";
+import { ChatContext } from "../../components/chatContext";
+import ChatUsers from "../../components/Chat";
+import Potential from "../../components/potentialChat";
+import Box from "../../components/box";
+import InputEmoji from "react-input-emoji"
 
 const Profile = () => {
   const [sort, setSort] = useState("def");
@@ -11,6 +18,7 @@ const Profile = () => {
   const [userr, setUserr] = useState(null); // ✅ Set initial state to null
 
   const { user, logoutUser } = useContext(AuthContext);
+  const { userChat,userChatLoading, updateCurrentChat } = useContext(ChatContext);
 
 
   useEffect(() => {
@@ -39,7 +47,9 @@ const Profile = () => {
 
 
 
-
+ 
+  
+  
   return (
     <section className="profile">
       <div>
@@ -62,40 +72,46 @@ const Profile = () => {
               />
             </g>
 
-            <g id="map">
+            {/* <g id="map">
               <path
                 fill="#90A4AE"
                 d="M16,14.2c-1,0-1.8,0.8-1.8,1.8s0.8,1.8,1.8,1.8c1,0,1.8-0.8,1.8-1.8S17,14.2,16,14.2z M16,0
           C7.2,0,0,7.2,0,16c0,8.8,7.2,16,16,16s16-7.2,16-16C32,7.2,24.8,0,16,0z M19.5,19.5L6.4,25.6l6.1-13.1l13.1-6.1L19.5,19.5z"
               />
-            </g>
+            </g> */}
 
-            <g id="planner">
+            {/* <g id="planner">
               <path
                 fill="#90A4AE"
                 d="M28.4,3.6h-1.8V0h-3.6v3.6H8.9V0H5.3v3.6H3.6C1.6,3.6,0,5.1,0,7.1L0,32c0,2,1.6,3.6,3.6,3.6h24.9c2,0,3.6-1.6,3.6-3.6V7.1C32,5.1,30.4,3.6,28.4,3.6z M28.4,32H3.6V12.4h24.9V32z M7.1,16H16v8.9H7.1V16z"
               />
-            </g>
+            </g> */}
           </defs>
         </svg>
 
         <nav className="nav__cont">
           <ul className="nav">
             <li className="nav__items">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-                <use xlinkHref="#home"></use>
-              </svg>
-              <a href="/">Home</a>
+              <IoMdSettings />
+              <a href="/">Settings</a>
             </li>
 
             <li className="nav__items">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                <use xlinkHref="#search"></use>
-              </svg>
-              <a href="/">Search</a>
+              <IoIosExit />
+              <div className="logout">
+                {user && <Link onClick={logoutUser}>Logout</Link>}
+                <div className="logreg">
+                  {!user && (
+                    <>
+                      <Link to={"/login"}>Login</Link>
+                      <Link to={"/register"}>Register</Link>
+                    </>
+                  )}
+                </div>
+              </div>
             </li>
 
-            <li className="nav__items">
+            {/* <li className="nav__items">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                 <use xlinkHref="#map"></use>
               </svg>
@@ -107,7 +123,7 @@ const Profile = () => {
                 <use xlinkHref="#planner"></use>
               </svg>
               <a href="/">Planner</a>
-            </li>
+            </li> */}
           </ul>
         </nav>
 
@@ -120,20 +136,6 @@ const Profile = () => {
               <img src={get.image} />
               <p>{get.bio}</p>
             </div>
-            <div className="settings">
-              <span>Settings</span>
-              <div className="logout">
-                {user && <Link onClick={logoutUser}>Logout</Link>}
-              </div>
-              <div className="logreg">
-                {!user && (
-                  <>
-                    <Link to={"/login"}>Login</Link>
-                    <Link to={"/register"}>Register</Link>
-                  </>
-                )}
-              </div>
-            </div>
           </div>
           <div className="add"></div>
           <div className="cardSelect">
@@ -142,6 +144,33 @@ const Profile = () => {
             <button>Following</button>
           </div>
           <div className="line"></div>
+
+
+          <div className="potential">
+              <Potential/>
+          </div>
+          <div className="chat">
+              {userChat?.length < 1 ? null : (<div className="chatt">
+                 <div>
+                  {userChatLoading && <p>Loading chats...</p>}
+                  {userChat?.map((chat, index)=>{
+                    
+                    
+                    
+                    return(
+                      <div key={index} onClick={()=> updateCurrentChat(chat)}>
+                        <ChatUsers chat={chat} user={userr}/> 
+                      </div>
+                    )
+                  })}
+                 </div>
+                 <Box/>
+              </div>)}
+          </div>
+
+
+
+
           <div className="">
             {change ? (
               <div className="sort">
