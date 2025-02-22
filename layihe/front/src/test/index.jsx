@@ -22,29 +22,34 @@ const Reels = () => {
         getData();
     }, []);
 
-    // Sort reels whenever `reels` changes
+    // Sort reels into least-watched, mid-tier, and most-watched
     useEffect(() => {
         if (reels.length > 0) {
-            const sorted = [...reels].sort((a, b) => {
+            const sortedByViews = [...reels].sort((a, b) => a.views - b.views);
+            
+            const shuffle = (array) => array.sort(() => Math.random() - 0.5);
+            
+            const leastWatched = shuffle(sortedByViews.slice(0, 3));
+            const midWatched = shuffle(sortedByViews.slice(3, 18));
+            const mostWatched = shuffle(sortedByViews.slice(18, 28));
+            
+            const selectedReels = [...leastWatched, ...midWatched, ...mostWatched];
+            
+            const sorted = selectedReels.sort((a, b) => {
                 const engagementA = a.likes * 0.5 + a.shares * 0.3 + a.comments * 0.2;
                 const engagementB = b.likes * 0.5 + b.shares * 0.3 + b.comments * 0.2;
-
-                // 2. Freshness (recent content gets a boost)
-                const freshnessA = (Date.now() - new Date(a.timestamp)) / (1000 * 3600 * 24); // Days since posted
+                
+                const freshnessA = (Date.now() - new Date(a.timestamp)) / (1000 * 3600 * 24);
                 const freshnessB = (Date.now() - new Date(b.timestamp)) / (1000 * 3600 * 24);
-
-                // 3. User preferences (e.g., hashtags they follow)
-                // const relevanceA = a.hashtags.some(tag => userPreferences.hashtags.includes(tag)) ? 1 : 0;
-                // const relevanceB = b.hashtags.some(tag => userPreferences.hashtags.includes(tag)) ? 1 : 0;
-
-                // Final score
-                const scoreA = engagementA * 0.6 - freshnessA * 0.3
-                const scoreB = engagementB * 0.6 - freshnessB * 0.3
+                
+                const scoreA = engagementA * 0.6 - freshnessA * 0.3;
+                const scoreB = engagementB * 0.6 - freshnessB * 0.3;
                 return scoreB - scoreA;
             });
+            
             setSortedReels(sorted);
         }
-    }, [reels]); // Only run when `reels` changes
+    }, [reels]);
 
     // Handle swipe gestures
     const handleSwipe = (direction) => {
@@ -60,10 +65,9 @@ const Reels = () => {
         onSwipedDown: () => handleSwipe('down'),
         trackMouse: true,
     });
+
     const trackEngagement = (reelId, action) => {
-        // Send to backend (or update local state)
         console.log(`User ${action} reel ${reelId}`);
-        // Example: Increase likes locally
         setSortedReels(prev => prev.map(reel =>
             reel.id === reelId ? { ...reel, likes: reel.likes + 1 } : reel
         ));

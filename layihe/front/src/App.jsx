@@ -21,7 +21,9 @@ function App() {
   const [count, setCount] = useState(0)
   const [userr, setUserr] = useState(null);
 
- 
+
+  const { user, logoutUser } = useContext(AuthContext);
+
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -33,7 +35,7 @@ function App() {
 
   return (
     <>
-      <ChatProv user={userr}>
+      <ChatProv user={user}>
         <Routes>
           <Route path='/' element={<Client />}>
             <Route index element={<Home />} />
@@ -45,10 +47,12 @@ function App() {
             <Route path='chat' element={<Chat />} />
 
           </Route>
-          <Route path="/register" element={userr ? <Navigate to="/" /> : <Register />} />
-          <Route path="/login" element={userr ? <Navigate to="/" /> : <Login />} />
+          <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
+          <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
         </Routes>
       </ChatProv>
+{/* 
+      <Reels/> */}
     </>
   )
 }

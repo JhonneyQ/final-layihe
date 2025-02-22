@@ -1,0 +1,30 @@
+.head{
+    h3{
+        text-align: center;
+        padding: 30px;
+        color: white;
+    }
+    .message{
+
+        span{
+            color: white;
+        }
+        .inp{
+            display: flex;
+            align-items: center;
+            
+            .but{
+                font-size: 25px;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                color: white;
+                
+            }
+        }
+    }
+}
+
+.err{
+    color: white;
+}

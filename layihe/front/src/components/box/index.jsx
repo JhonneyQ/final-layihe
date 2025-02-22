@@ -3,6 +3,8 @@ import { ChatContext } from '../chatContext';
 import axios from 'axios';
 import moment from "moment"
 import InputEmoji from "react-input-emoji"
+import "./index.scss"
+import { IoSend } from "react-icons/io5";
 
 const Box = () => {
 
@@ -11,6 +13,14 @@ const Box = () => {
     const { userChat, iseMessageLoading, messages, currentChat, sendTextMessages } = useContext(ChatContext)
     const [recipientUser, setRecipientUser] = useState(null)
     const [textMessage, setTextMessage] = useState("")
+
+    // const [sub, setSub] = useState("");
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault(); // Prevent page refresh
+    //     console.log("Message Sent:", sub);
+    //     setSub(""); // Clear input field
+    // };
 
     useEffect(() => {
         if (userr && userr._id) {
@@ -36,16 +46,20 @@ const Box = () => {
         }
     };
 
-    
-    
 
-    const recipientId = currentChat?.members.find((id) => id !== userr?.id)
-   
-    console.log(userChat);
 
-    
-    
-    
+
+
+
+
+    const recipientId = currentChat?.members.find((id) => id !== userr?._id)
+
+    // console.log(recipientId);
+
+
+
+
+
 
 
     useEffect(() => {
@@ -62,29 +76,40 @@ const Box = () => {
         getUser()
     }, [recipientId])
 
-    if (!recipientUser) return (<p>no validation </p>)
+    if (!recipientUser) return (<p className='err'>no validation </p>)
 
-    if (iseMessageLoading) return (<p> loading chat </p>)
+    if (iseMessageLoading) return (<p className='err'> loading chat </p>)
 
-    
-    
-        
+
+
+
     return (
         <div>
 
-       
+
             <div className='head'>
                 <h3>{recipientUser?.name}</h3>
                 <div className='message'>
-                    {messages && messages.map((message, index) => (<div key={index} className={`${message?.senderId === userr?._id ? "message self " : ""}`}>
+                    {messages && messages.map((message, index) => (<div key={index} className={`${message?.senderId === userr?._id ? "message-self " : ""}`}>
                         <span>{message.text}</span>
                         {/* <span>{moment(message.createAt).calendar()}</span> */}
                     </div>))}
-                    <div>
-                        <InputEmoji value={textMessage} onChange={setTextMessage}/>
-                        <button onClick={()=> sendTextMessages(textMessage, userr, currentChat._id, sendTextMessages)}>
-                            send
+                    <div className='inp'>
+
+                        <InputEmoji value={textMessage} onChange={setTextMessage} />
+                        <button
+                            type="submit"
+                            className="but"
+                            onClick={(e) => {
+                                e.preventDefault(); // Prevent any unintended default behavior
+                                sendTextMessages(textMessage, userr, currentChat._id, sendTextMessages);
+                                setTextMessage(""); // Clear input field after sending
+                            }}
+                        >
+                            <IoSend />
                         </button>
+
+
                     </div>
                 </div>
             </div>

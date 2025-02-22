@@ -18,7 +18,7 @@ const Profile = () => {
   const [userr, setUserr] = useState(null); // ✅ Set initial state to null
 
   const { user, logoutUser } = useContext(AuthContext);
-  const { userChat,userChatLoading, updateCurrentChat } = useContext(ChatContext);
+  const { userChat, userChatLoading, updateCurrentChat } = useContext(ChatContext);
 
 
   useEffect(() => {
@@ -47,9 +47,9 @@ const Profile = () => {
 
 
 
- 
-  
-  
+
+
+
   return (
     <section className="profile">
       <div>
@@ -128,13 +128,38 @@ const Profile = () => {
         </nav>
 
       </div>
+      <div className="people">
+        <div className="potential">
+          <Potential />
+        </div>
+        <div className="chatname">
+          {userChat?.length < 1 ? null : (<div className="chatt">
+            <div>
+              {userChatLoading && <p>Loading chats...</p>}
+              {userChat?.map((chat, index) => {
+
+
+                return (
+                  <div key={index} onClick={() => updateCurrentChat(chat)}>
+                    <ChatUsers chat={chat} user={userr} className="users" />
+                  </div>
+                )
+              })}
+            </div>
+          </div>)}
+        </div>
+      </div>
       <div className="container">
         <div className="all">
 
           <div className="prof">
             <div className="pro">
-              <img src={get.image} />
+              <div className="nag">
+                <img src={get.image} />
+                <span>{get.name}</span>
+              </div>
               <p>{get.bio}</p>
+              
             </div>
           </div>
           <div className="add"></div>
@@ -144,28 +169,10 @@ const Profile = () => {
             <button>Following</button>
           </div>
           <div className="line"></div>
-
-
-          <div className="potential">
-              <Potential/>
-          </div>
-          <div className="chat">
-              {userChat?.length < 1 ? null : (<div className="chatt">
-                 <div>
-                  {userChatLoading && <p>Loading chats...</p>}
-                  {userChat?.map((chat, index)=>{
-                    
-                    
-                    
-                    return(
-                      <div key={index} onClick={()=> updateCurrentChat(chat)}>
-                        <ChatUsers chat={chat} user={userr}/> 
-                      </div>
-                    )
-                  })}
-                 </div>
-                 <Box/>
-              </div>)}
+          <div className="chatbox">
+            {userChat?.length < 1 ? null : (<div className="chatt">
+              <Box />
+            </div>)}
           </div>
 
 

@@ -1,5 +1,6 @@
 import React, { createContext, useCallback, useEffect, useState } from 'react'
 import axios from "axios"
+import { io } from "socket.io-client"
 
 
 export const ChatContext = createContext()
@@ -14,9 +15,58 @@ const ChatProv = ({ children, user }) => {
     const [iseMessageLoading, setiseMessageLoading] = useState(false)
     const [pot, setPot] = useState([])
     const [newMessage, setNewMessage] = useState(null)
+    const [socket, setSocket] = useState(null)
+    const [onlineUsers, setOnlineUsers] = useState([])
 
 
+    console.log("onlineUsers", onlineUsers);
+    
 
+    useEffect(() => {
+        const newSocket = io("http://localhost:3000")
+        setSocket(newSocket)
+
+        return () => {
+            newSocket.disconnect()
+        }
+    }, [user])
+
+    useEffect(() => {
+        if (socket === null) return
+        socket.emit("addNewUser", user?._id)
+        socket.on("getonlineUsers", (res)=>{
+            setOnlineUsers(res)
+        })
+
+        return () => {
+            socket.off("getOnlineUsers")
+        }
+    }, [socket])
+
+
+    useEffect(() => {
+        if (socket === null) return
+
+        const recipientId = currentChat?.members.find((id) => id !== user?._id)
+
+        socket.emit("sendMessage", {...newMessage, recipientId})
+        
+    }, [newMessage])
+
+    useEffect(() => {
+        if (socket === null) return
+
+        socket.on("getMessage", res => {
+            if(currentChat?._id !== res.chatId) return
+
+            setmessages((prev) => [...prev, res])
+        })
+
+        return () =>{
+            socket.off("getMessage")
+        }
+        
+    }, [socket, currentChat])
 
 
 
@@ -48,15 +98,18 @@ const ChatProv = ({ children, user }) => {
 
 
             setPotential(pChat);
+
+            
         };
 
-
+        getUser()
+        
     }, [userChat])
 
     useEffect(() => {
         const getUserChat = async () => {
             if (!user?._id) return;
-    
+
             setUserChatLoading(true);
             try {
                 const res = await axios.get(`http://localhost:8080/api/chat/${user._id}`);
@@ -66,16 +119,16 @@ const ChatProv = ({ children, user }) => {
             }
             setUserChatLoading(false);
         };
-    
+
         getUserChat();
     }, [user]);
 
-    
-    
 
-  
-    
-    
+
+
+
+
+
 
     useEffect(() => {
         const getMessages = async () => {
@@ -102,13 +155,35 @@ const ChatProv = ({ children, user }) => {
 
     }, [currentChat])
 
-    const updateCurrentChat = useCallback((chat) => {   
-        setCurrentChat(chat)
-    }, [])
 
-    
-    
-    
+    // {
+    //     userChat?.map((chat, index) => {
+
+
+
+    //         return (
+    //             <div key={index} onClick={() => setCurrentChat(chat)}>
+
+    //             </div>
+    //         )
+    //     })
+    // }
+
+    const updateCurrentChat = useCallback((chat) => {
+        setCurrentChat(chat)
+
+
+    }, [currentChat])
+
+
+
+
+
+
+
+
+
+
 
 
     const sendTextMessages = useCallback(async (textMessage, sender, currentChatId, setTextMessage) => {
@@ -121,7 +196,7 @@ const ChatProv = ({ children, user }) => {
         })
 
         setNewMessage(response.data)
-        setmessages((prev)=> [...prev, response.data])
+        setmessages((prev) => [...prev, response.data])
         setTextMessage("")
     }, [])
 
@@ -138,7 +213,7 @@ const ChatProv = ({ children, user }) => {
 
 
     return (
-        <ChatContext.Provider value={{ userChat, userChatLoading, createChat, potential, updateCurrentChat, iseMessageLoading, messages, currentChat, sendTextMessages }}>{children}</ChatContext.Provider>
+        <ChatContext.Provider value={{ userChat, userChatLoading, createChat, potential, updateCurrentChat, iseMessageLoading, messages, currentChat, sendTextMessages , onlineUsers}}>{children}</ChatContext.Provider>
     )
 }
 

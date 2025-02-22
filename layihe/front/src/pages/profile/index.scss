@@ -1,15 +1,36 @@
 .profile {
     padding-top: 70px;
     height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)),
+    url('https://images3.alphacoders.com/129/1291921.jpg') center/cover no-repeat;
+
+    .people{
+        background-color: rgba(49, 51, 56, 0.8);
+        position: fixed;
+        height: 100vh;
+        width: 300px;
+        top: 0;
+        padding-top: 50px;
+        .potential{
+            padding: 30px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .chatname{
+            padding: 30px;
+            
+        }
+    }
 
     .nav__cont {
+        padding-top: 130px;
         position: fixed;
         width: 100px;
         top: 0;
         right: 0;
         height: 100vh;
-        z-index: 100;
-        background-color: rgb(158, 122, 65);
+        z-index: 0;
+        background-color: rgba(158, 122, 65, 0.8);
         overflow: hidden;
         transition: width 0.3s ease;
         cursor: pointer;
@@ -117,8 +138,25 @@
 
             .pro {
                 display: flex;
-                align-items: center;
-                justify-content: space-between;
+                flex-direction: column;
+                gap: 30px;
+                color: white;
+                .nag{
+                    display: flex;
+                    align-items: center;
+                    gap: 50px;
+                    span{
+                        font-size: 30px;
+                    }
+                    img{
+                        border-radius: 50%;
+                    }
+                }
+
+                p{
+                    margin-left: 21%;
+                    font-size: 18px;
+                }
             }
         }
 

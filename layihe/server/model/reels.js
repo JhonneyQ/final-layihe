@@ -9,7 +9,6 @@ const reelsSchema = new Schema({
   shares: {type: Number, required:true},
   comments: {type: Number, required:true},
   hashtags: {type: [String], required:true},
-  isReel: {type: Boolean, default: false},
   creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
   
 },
