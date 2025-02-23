@@ -71,4 +71,52 @@ const getUsers = async (req,res) => {
     }
 }
 
-module.exports = { registerUser, loginUser, findUser, getUsers}
+const followUser = async (req, res) => {
+    try {
+        const { userId } = req.body;
+        const { followerId } = req.body; 
+
+        if (userId === followerId) {
+            return res.status(400).json({ message: "You can't follow yourself!" });
+        }
+
+        await userBlog.updateOne(
+            { _id: userId },
+            { $addToSet: { followers: followerId } } 
+        );
+
+        await userBlog.updateOne(
+            { _id: followerId },
+            { $addToSet: { following: userId } }
+        );
+
+        res.status(200).json({ message: "User followed successfully!" });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+
+const unfollowUser = async (req, res) => {
+    try {
+        const { userId } = req.body;
+        const { followerId } = req.body;
+
+        await userBlog.updateOne(
+            { _id: userId },
+            { $pull: { followers: followerId } }
+        );
+
+        await userBlog.updateOne(
+            { _id: followerId },
+            { $pull: { following: userId } }
+        );
+
+        res.status(200).json({ message: "User unfollowed successfully!" });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+module.exports = { registerUser, loginUser, findUser, getUsers,followUser,
+    unfollowUser}

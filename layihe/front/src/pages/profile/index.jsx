@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import "./index.scss";
 import { AuthContext } from "../../components/authContext";
 import { Link } from "react-router-dom";
@@ -10,15 +10,74 @@ import ChatUsers from "../../components/Chat";
 import Potential from "../../components/potentialChat";
 import Box from "../../components/box";
 import InputEmoji from "react-input-emoji"
+import Moments from "../reels";
 
 const Profile = () => {
   const [sort, setSort] = useState("def");
-  const [change, setChange] = useState(false);
+  const [change, setChange] = useState("def");
   const [get, setGet] = useState([]);
   const [userr, setUserr] = useState(null); // ✅ Set initial state to null
 
   const { user, logoutUser } = useContext(AuthContext);
   const { userChat, userChatLoading, updateCurrentChat } = useContext(ChatContext);
+  const [following, setFollowing] = useState([])
+  const [followers, setFollowers] = useState([])
+  const [allUsers, setAllUsers] = useState([])
+
+
+
+  useEffect(() => {
+    const getFollowing = async () => {
+      if (get?.followers) {
+        setFollowing(get.followers);
+      }
+    };
+
+    getFollowing()
+  }, [get])
+
+  useEffect(() => {
+    const getFollowers = async () => {
+      if (get?.following) {
+        setFollowers(get.following);
+      }
+    };
+
+    getFollowers()
+  }, [get])
+
+  const getUser = async () => {
+    if (!user?._id) return;
+
+
+    const res = await axios(`http://localhost:8080/api/user`);
+
+    setAllUsers(res.data)
+
+  };
+
+  useEffect(() => {
+
+
+    getUser()
+
+  }, [user])
+
+
+  const filter = allUsers.filter((q) => {
+    return following.includes(q?._id);
+  });
+  const filterr = allUsers.filter((q) => {
+    return followers.includes(q?._id);
+  });
+
+
+
+
+
+
+
+
 
 
   useEffect(() => {
@@ -44,6 +103,28 @@ const Profile = () => {
       console.error("Error fetching user data:", error);
     }
   };
+
+
+
+  const foll = async(id) => {
+    try {
+      const res = await axios.post("http://localhost:8080/api/user/follow", { userId: id, followerId: user?._id })
+    } catch (error) {
+      console.log(error);
+
+    }
+
+
+  }
+
+  const unfoll = async(id) => {
+    try {
+      const res = await axios.post("http://localhost:8080/api/user/unfollow", { userId: id, followerId: user?._id })
+    } catch (error) {
+      console.log(error);
+
+    }
+  }
 
 
 
@@ -159,34 +240,61 @@ const Profile = () => {
                 <span>{get.name}</span>
               </div>
               <p>{get.bio}</p>
-              
+
             </div>
           </div>
           <div className="add"></div>
           <div className="cardSelect">
-            <button onClick={() => setChange(true)}>Moments</button>
-            <button>Followers</button>
-            <button>Following</button>
+            <button onClick={() => setChange("moments")}>Moments</button>
+            <button onClick={() => setChange("followers")}>Following</button>
+            <button onClick={() => setChange("following")}>Followers</button>
           </div>
           <div className="line"></div>
           <div className="chatbox">
             {userChat?.length < 1 ? null : (<div className="chatt">
-              <Box />
+              {change === "moments" && <Box className="box" />}
+              {change === "followers" &&
+                filterr.map((q) => (
+                  <div key={q._id} className="followers">
+                    <img src={q.image} alt={q.name} />
+                    <p>{q.name}</p>
+                    {q.followers?.includes(user?._id) ? (
+                      <button onClick={() => unfoll(q._id)}>Unfollow</button>
+                    ) : (
+                      <button onClick={() => foll(q._id)}>Follow</button>
+                    )}
+                  </div>
+                ))}
+
+              {change === "following" &&
+                filter.map((q) => (
+                  <div key={q._id} className="following">
+                    <img src={q.image} alt={q.name} />
+                    <p>{q.name}</p>
+                    {q.followers?.includes(user?._id) ? (
+                      <button onClick={() => unfoll(q._id)}>Unfollow</button>
+                    ) : (
+                      <button onClick={() => foll(q._id)}>Follow</button>
+                    )}
+                  </div>
+                ))}
             </div>)}
           </div>
 
 
 
 
-          <div className="">
-            {change ? (
+
+
+          {/* <div className="">
+            {change === "moments" && (
               <div className="sort">
                 <button onClick={() => setSort("def")}>All</button>
                 <button onClick={() => setSort("reels")}>Reels</button>
                 <button onClick={() => setSort("posts")}>Post</button>
               </div>
-            ) : console.log("no video")}
-          </div>
+            ) }
+          </div> */}
         </div>
       </div>
     </section>

@@ -18,24 +18,18 @@ import Chat from './components/Chat'
 import ChatProv from './components/chatContext'
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [userr, setUserr] = useState(null);
+
 
 
   const { user, logoutUser } = useContext(AuthContext);
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUserr(JSON.parse(storedUser));
-    }
-  }, []);
+
 
 
 
   return (
     <>
-      <ChatProv user={user}>
+      {/* <ChatProv user={user}>
         <Routes>
           <Route path='/' element={<Client />}>
             <Route index element={<Home />} />
@@ -50,9 +44,9 @@ function App() {
           <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
           <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
         </Routes>
-      </ChatProv>
-{/* 
-      <Reels/> */}
+      </ChatProv> */}
+
+      <Reels/>
     </>
   )
 }

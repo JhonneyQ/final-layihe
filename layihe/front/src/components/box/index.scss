@@ -1,30 +1,129 @@
-.head{
-    h3{
+.head {
+    h3 {
         text-align: center;
-        padding: 30px;
+        padding: 20px;
         color: white;
+        font-size: 30px;
     }
-    .message{
 
-        span{
-            color: white;
+    .message {
+        height: 400px;
+        overflow-y: auto;
+        padding: 10px;
+
+        /* Custom scrollbar */
+        &::-webkit-scrollbar {
+            width: 8px;
         }
-        .inp{
+
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .userr {
             display: flex;
             align-items: center;
-            
-            .but{
-                font-size: 25px;
-                background-color: transparent;
-                border: none;
-                cursor: pointer;
+            gap: 13px;
+            margin-bottom: 10px;
+
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+
+            p {
+                color: grey;
+                background-color: white;
+                padding: 10px 15px;
+                border-radius: 20px;
+                max-width: 70%;
+                word-wrap: break-word;
+            }
+        }
+
+        .sender {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 10px;
+
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+
+            p {
+                background-color: grey;
                 color: white;
-                
+                padding: 10px 15px;
+                border-radius: 20px;
+                max-width: 70%;
+                word-wrap: break-word;
+            }
+        }
+    }
+
+    .inp {
+        display: flex;
+        align-items: center;
+
+        gap: 10px;
+        padding: 10px;
+        border-radius: 8px;
+        z-index: 1;
+        
+       
+
+        .input{
+
+        }
+        
+
+        .but {
+            font-size: 25px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            color: white;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: #1e90ff;
             }
         }
     }
 }
 
-.err{
+.err {
     color: white;
+}
+
+@media (max-width: 768px) {
+    .head {
+        h3 {
+            padding: 15px;
+            font-size: 18px;
+        }
+
+        .message {
+            height: 300px;
+        }
+
+        .inp {
+            padding: 8px;
+        }
+    }
 }

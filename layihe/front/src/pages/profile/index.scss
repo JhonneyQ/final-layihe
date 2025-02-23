@@ -1,6 +1,6 @@
 .profile {
     padding-top: 70px;
-    height: 100vh;
+    height: 110vh;
     background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)),
     url('https://images3.alphacoders.com/129/1291921.jpg') center/cover no-repeat;
 
@@ -167,6 +167,11 @@
         .cardSelect {
             display: flex;
             justify-content: space-around;
+            button{
+                background-color: transparent;
+                border: none;
+                color: white;
+            }
         }
 
         .line {
@@ -175,11 +180,70 @@
             background-color: rgb(158, 122, 65);
         }
 
-        .chat{
-            .chatt{
+        
+
+        .chatt{
+                  
+            .followers{
                 display: flex;
-                gap: 30px;
+                gap: 20px;
+                align-items: center;
+                color: white;
+                &::-webkit-scrollbar {
+                    width: 8px;
+                }
+        
+                &::-webkit-scrollbar-track {
+                    background: #f1f1f1;
+                    border-radius: 4px;
+                }
+        
+                &::-webkit-scrollbar-thumb {
+                    background: #888;
+                    border-radius: 4px;
+                }
+        
+                &::-webkit-scrollbar-thumb:hover {
+                    background: #555;
+                }
+           
+                img{
+                    width: 5%;
+                    border-radius: 50%;
+                }
             }
+            .following{
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                color: white;
+                &::-webkit-scrollbar {
+                    width: 8px;
+                }
+        
+                &::-webkit-scrollbar-track {
+                    background: #f1f1f1;
+                    border-radius: 4px;
+                }
+        
+                &::-webkit-scrollbar-thumb {
+                    background: #888;
+                    border-radius: 4px;
+                }
+        
+                &::-webkit-scrollbar-thumb:hover {
+                    background: #555;
+                }
+                img{
+                    width: 5%;
+                    border-radius: 50%;
+                }
+            }
+
+            
         }
+
+        
     }
 }
+
