@@ -89,12 +89,8 @@ const Reels = () => {
                         controls
                         style={{ width: '100%' }}
                     />
-                    <button className='like'>
-
-                    </button>
-                    <button className='save'>
-
-                    </button>
+                 
+                    
                 </div>
 
             </div>

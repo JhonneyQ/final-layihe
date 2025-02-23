@@ -1,99 +1,105 @@
+const mongoose = require("mongoose");
 const ReelBlog = require("../model/reels");
+const multer = require("multer");
 
 
 
+const uploadReel = async (req, res) => {
+  try {
+    console.log("Received file:", req.file);
+    console.log("Received body:", req.body);
 
-
-
-const getAllReels = async (req, res) => {
-    try {
-      const users = await ReelBlog.find({});
-  
-      res.status(200).json({ data: users, message: "success!" });
-    } catch (error) {
-      res.status(500).send({ message: error.message });
+    if (!req.file || !req.body.context) {
+      return res.status(400).json({ success: false, message: "Missing video or context" });
     }
-  };
 
-
-
-  const getReelsById = async (req, res) => {
-    const { id } = req.params;
-    try {
-      const reel = await ReelBlog.findById(id);
-  
-      res.status(200).json({ data: reel, message: "success!" });
-    } catch (error) {
-      res.status(500).send({ message: error.message });
+    if (!mongoose.Types.ObjectId.isValid(req.body.creator)) {
+      return res.status(400).json({ success: false, message: "Invalid creator ID" });
     }
-  };
 
+    const newReel = new ReelBlog({
+      videoUrl: req.file.path,
+      creator: new mongoose.Types.ObjectId(req.body.creator),
+      context: req.body.context, // ✅ Save context in the database
+      comments: [],
+      shares: 0,
+      likes: 0,
+    });
 
-  const deleteReels = async (req, res) => {
-    const { id } = req.params;
-    try {
-      const deletedReel = await  ReelBlog.findByIdAndDelete(id);
-      res.status(200).json({
-        deletedReel,
-        message: "deleted successfully!",
-      });
-    } catch (error) {
-      res.status(500).send({ message: error.message });
-    }
-  };
+    await newReel.save();
 
-
-  const editReels = async (req, res) => {
-    const { id } = req.params;
-  
-    try {
-      const updatedUser = await ReelBlog.findByIdAndUpdate(
-        id,
-        {
-          ...req.body,
-        },
-        {
-          new: true,
-        }
-      );
-  
-      res.status(200).json({
-        message: "updated successfully!",
-        updatedUser,
-      });
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  };
-
-
-
-  const postReel = async (req, res) => {
-
-  
-    try {
-      const post = ReelBlog(
-        {
-          ...req.body
-        }
-      );
-
-      await post.save()
-
-  
-      res.status(200).json({
-        message: "updated successfully!",
-        post,
-      });
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  };
-
-  module.exports = {
-    getAllReels,
-    getReelsById,
-    deleteReels,
-    postReel,
-    editReels
+    res.status(201).json({
+      success: true,
+      message: "Video uploaded successfully!",
+      data: newReel,
+    });
+  } catch (error) {
+    console.error("Upload error:", error);
+    res.status(500).json({ success: false, message: "Upload failed", error: error.message });
   }
+};
+
+// Fetch all reels
+const getAllReels = async (req, res) => {
+  try {
+    const reels = await ReelBlog.find();
+
+    res.status(200).json({
+      success: true,
+      data: reels,
+      message: "Reels fetched successfully!",
+    });
+  } catch (error) {
+    console.error("Error fetching reels:", error);
+    res.status(500).json({ success: false, message: "Internal server error", error: error.message });
+  }
+};
+
+const getReelsById = async (req, res) => {
+  try {
+    const reel = await ReelBlog.findById(req.params.id);
+    if (!reel) {
+      return res.status(404).json({ success: false, message: "Reel not found" });
+    }
+
+    res.status(200).json({ success: true, data: reel, message: "Reel fetched successfully!" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+
+const deleteReels = async (req, res) => {
+  try {
+    const deletedReel = await ReelBlog.findByIdAndDelete(req.params.id);
+    if (!deletedReel) {
+      return res.status(404).json({ success: false, message: "Reel not found" });
+    }
+
+    res.status(200).json({ success: true, message: "Reel deleted successfully!", data: deletedReel });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+// Edit a reel
+const editReels = async (req, res) => {
+  try {
+    const updatedReel = await ReelBlog.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedReel) {
+      return res.status(404).json({ success: false, message: "Reel not found" });
+    }
+
+    res.status(200).json({ success: true, message: "Reel updated successfully!", data: updatedReel });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+module.exports = {
+  uploadReel,  // ✅ Fixed missing export
+  getAllReels,
+  getReelsById,
+  deleteReels,
+  editReels,
+};

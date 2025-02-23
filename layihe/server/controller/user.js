@@ -118,5 +118,23 @@ const unfollowUser = async (req, res) => {
     }
 };
 
+
+const update = async (req, res) => {
+  try {
+      const { userId } = req.body;
+
+      await userBlog.updateOne(
+          { _id: userId },
+
+      );
+
+
+
+      res.status(200).json({ message: "User unfollowed successfully!" });
+  } catch (error) {
+      res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = { registerUser, loginUser, findUser, getUsers,followUser,
-    unfollowUser}
+    unfollowUser, update}

@@ -10,8 +10,14 @@ const Potential = () => {
 
   const { user } = useContext(AuthContext)
 
-  
-  
+
+
+
+
+
+
+
+
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -20,22 +26,23 @@ const Potential = () => {
     }
   }, []);
 
-  
+
 
   return (
     <div className="all-users">
-     
+
       {potential && potential.map((u, index) => (
         <div>
-      
+
           <div
             className="user"
             key={index}
             onClick={() => createChat(user?._id, u._id)}
           >
             <p> {u.name}</p>
-    
-             <div className={onlineUsers?.some((user) => user?.userId === u?._id) ? "user-Online" : "offline"}></div>
+  
+
+            <div className={onlineUsers?.some((user) => user?.userId === u?._id) ? "user-Online" : "offline"}></div>
           </div>
         </div>
 

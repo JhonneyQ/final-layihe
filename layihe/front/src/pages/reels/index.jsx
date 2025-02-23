@@ -1,8 +1,14 @@
 import React from 'react'
+import Reels from '../../test'
+import "./index.scss"
+
 
 const Moments = () => {
   return (
-    <div>Moments</div>
+    <section className='rel'>
+      <Reels className="vid"/>
+
+    </section>
   )
 }
 

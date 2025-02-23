@@ -32,6 +32,28 @@ const ChatUsers = ({ chat, user }) => {
 
 
 
+  const foll = async (id) => {
+    try {
+      const res = await axios.post("http://localhost:8080/api/user/follow", { userId: id, followerId: user?._id })
+    } catch (error) {
+      console.log(error);
+
+    }
+
+
+  }
+
+  const unfoll = async (id) => {
+    try {
+      const res = await axios.post("http://localhost:8080/api/user/unfollow", { userId: id, followerId: user?._id })
+    } catch (error) {
+      console.log(error);
+
+    }
+  }
+
+
+
 
 
   return (
@@ -42,6 +64,11 @@ const ChatUsers = ({ chat, user }) => {
           <div className={isOnline ? "user-online" : "offline"}></div>
         </div>
         <div className='names'>{recipientUser?.name}</div>
+        {recipientUser?.followers?.includes(user?._id) ? (
+          <button className='fol' onClick={() => unfoll(recipientUser._id)}>Unfollow</button>
+        ) : (
+          <button className='fol' onClick={() => foll(recipientUser._id)}>Follow</button>
+        )}
       </div>
       <div>
 

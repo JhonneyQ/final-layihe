@@ -174,7 +174,7 @@ const Profile = () => {
           <ul className="nav">
             <li className="nav__items">
               <IoMdSettings />
-              <a href="/">Settings</a>
+              <Link to="/post" >Post</Link>
             </li>
 
             <li className="nav__items">

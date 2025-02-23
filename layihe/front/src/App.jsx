@@ -16,6 +16,8 @@ import Register from './pages/register'
 import { AuthContext } from './components/authContext'
 import Chat from './components/Chat'
 import ChatProv from './components/chatContext'
+import UploadReel from './components/uploadVideo'
+
 
 function App() {
 
@@ -29,7 +31,7 @@ function App() {
 
   return (
     <>
-      {/* <ChatProv user={user}>
+      <ChatProv user={user}>
         <Routes>
           <Route path='/' element={<Client />}>
             <Route index element={<Home />} />
@@ -39,14 +41,15 @@ function App() {
             <Route path='moments' element={<Moments />} />
             <Route path='chardetails/:id' element={<CharDetails />} />
             <Route path='chat' element={<Chat />} />
+            <Route path='post' element={<UploadReel />} />
 
           </Route>
           <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
           <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
         </Routes>
-      </ChatProv> */}
+      </ChatProv>
 
-      <Reels/>
+      
     </>
   )
 }

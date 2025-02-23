@@ -1,19 +1,12 @@
+const mongoose = require("mongoose");
 
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const ReelSchema = new mongoose.Schema({
+  videoUrl: { type: String, required: true },
+  context: { type: String, required: true },
+  creator: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }, 
+  comments: { type: [String], default: [] }, 
+  shares: { type: Number, default: 0 },
+  likes: { type: Number, default: 0 },
+}, { timestamps: true });
 
-
-const reelsSchema = new Schema({
-  videoUrl: {type: String, required:true}, // String is shorthand for {type: String}
-  likes:  {type: Number, required:true},
-  shares: {type: Number, required:true},
-  comments: {type: Number, required:true},
-  hashtags: {type: [String], required:true},
-  creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
-  
-},
-{timestamps: true});
-
-const ReelBlog = mongoose.model('reels', reelsSchema);
-
-module.exports = ReelBlog
+module.exports = mongoose.model("reels", ReelSchema);
