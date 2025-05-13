@@ -3,18 +3,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 
+
+:root {
+    --primary-color: rgb(158, 122, 65);
+    --secondary-color: rgb(172, 154, 125);
+    --background-color: rgb(3, 3, 3);
+    --text-color: rgb(170, 170, 170);
+}
+
+main {
+    background-color: var(--background-color);
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+}
+
+
+
 main {
     background-color: rgb(3, 3, 3);
 
     .sec1 {
         background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)),
             url('https://dl.lolwallpapers.net/?id=13630') center/cover no-repeat;
-        height: 100vh;
-        background-size: cover;
+        height: 110vh;
         display: flex;
         align-items: center;
+        justify-content: center;
 
-
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
         .all {
             display: flex;
@@ -24,35 +44,38 @@ main {
             gap: 150px;
 
             .par {
-                display: flex;
-                flex-direction: column;
-                gap: 30px;
+                flex: 1;
+                min-width: 300px;
+                max-width: 650px;
 
                 h2 {
-                    color: rgb(158, 122, 65);
+                    color: var(--primary-color);
                     font-size: 60px;
-                    width: 650px;
+                    margin-bottom: 20px;
                 }
 
                 p {
                     color: white;
-                    width: 450px;
+                    font-size: 18px;
+                    line-height: 1.6;
                 }
             }
 
             .video {
-                width: 400px;
+                flex: 1;
+                min-width: 300px;
+                max-width: 400px;
 
                 video {
                     width: 100%;
-                    border: 3px solid rgb(158, 122, 65);
+                    border: 3px solid var(--primary-color);
                 }
             }
         }
     }
 
     .sec2 {
-        height: 100vh;
+        height: 120vh;
         margin-top: 100px;
         background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)),
             url('https://images8.alphacoders.com/844/844396.jpg') center/cover no-repeat;
@@ -60,6 +83,15 @@ main {
         justify-content: center;
         align-items: center;
         position: relative;
+
+        @media (max-width: 1000px) {
+            height: 100vh;
+        }
+
+        @media (max-width: 968px) {
+            display: none;
+        }
+
 
         .cards {
             display: flex;
@@ -69,6 +101,8 @@ main {
             position: absolute;
             top: -30%;
             left: 7%;
+          
+
 
             .b {
                 display: flex;
@@ -98,6 +132,10 @@ main {
                     width: 300px;
                     height: 600px;
                     background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://media-hosting.imagekit.io//2085023f5b0f4d58/Screenshot%202025-02-06%20184200_LE_upscale_balanced_x4.jpg?Expires=1833461242&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=ypYjv574AEs55FjK7pStWsIktuem3hPdOWcmhOTVr-aLwdLYalJzMmU-8OWVngguztRL0L~fVAtbVzynwuYiw0m3mRGGlWMbIngQoAdjVpvEALK3-5636mb8qHX0rN-NclN8XHjQRHvhd3alwwhVQsmPk1OILR-rmnK-pkyfhYRRug~pg9MaHZmBYlWfD~72YS34C86KMPzMxE~mUe07U473bGZIPaVJntpA1ygi1W0jwmEIS1IT-ZmbxsTMD302MvcrIWsFlBAQlKcbjwbHmdEzbw8iD-SoBzBf5F~aFbXZ39USna11JT0ruyRg8zcANTmATnOX2l2GxnzuTbcssA__') center/cover no-repeat;
+
+                    @media (max-width: 1290px) {
+                        display: none;
+                    }
 
                     .par {
                         padding: 20px;
@@ -129,6 +167,10 @@ main {
                     height: 600px;
                     position: relative;
                     text-align: center;
+
+                    @media (max-width: 1290px) {
+                        display: none;
+                    }
 
                     .par {
                         padding: 20px;
@@ -188,6 +230,10 @@ main {
             .emp {
                 height: 600px;
                 width: 300px;
+
+                @media (max-width: 1290px) {
+                    display: none;
+                }
             }
 
             .evelyn {
@@ -222,11 +268,18 @@ main {
                 height: 200px;
                 background: url('https://media-hosting.imagekit.io//8bb623c48b334ba2/31-319165_runes-reforged-for-league-of-legends-league-of-removebg-preview.png?Expires=1833459451&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=VxSIycqNN5Y0RAvrwm5jIVED600fqTajtyXOfZFKpfCvsA3-sNfKFDXBArrufMj1-3~8UMn9ACWWFQzhpg0A2ZwiYmJzRSVx1pANScnUYs9IqkOgr7NjIDPzGbKntoWyV0XgMr0HViEMsx12yLpFFZDMYYudqCKqO4zDCw1O2zGOMx3LaR0z1x23s-29mjKoNvmzjDinrd7GJDKVmnixL5zANhgaEQFhMZWOkPKpgFx1zzKZtQgzqhDHisjXbvTfHJOwmejAV36j6g3hy8dUtdtGegpgm7etRGcVnhBrT-PVbADkdTxpOfLR8SI1AIX-OZvtNf64DfQJ-Mov07Pm5Q__') center/cover no-repeat;
                 filter: drop-shadow(0 0 20px rgb(158, 122, 65));
+
             }
 
             .emp2 {
                 height: 600px;
                 width: 300px;
+
+                @media (max-width: 1290px) {
+                    display: none;
+                }
+
+
             }
 
             .rune {
@@ -237,6 +290,10 @@ main {
                 flex-direction: column;
                 justify-content: end;
                 filter: brightness(95%);
+
+                @media (max-width: 1290px) {
+                    display: none;
+                }
 
                 .par {
                     padding: 20px;
@@ -302,7 +359,7 @@ main {
     }
 
     .sec3 {
-        margin-top: 100px;
+        margin-top: 150px;
         height: 100vh;
         background: linear-gradient(rgba(0, 0, 0, 0.97), rgba(0, 0, 0, 0.4)),
             url('https://media-hosting.imagekit.io//1d6dec60405946e8/Untitled%20(1).jpeg?Expires=1833629759&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=V3sPU1RdbYwrO5p4PJxWqUtmASJCPqHSDZrEfb6Fa16VtRlZmaD-DE0cbUVls69SCPVROvKr5I~ehLufMr~dX5gU6fjTDEOzkR4pqfJgCSmcskdtJfrV4UJX8j0JtG3LFQybXfvIZUFrplkWdXMCrwraODbecrB-1AKfPA1dLfqOrrA2QsV2RveAAf~uhhUUl7HalHQrIejrghDg0jES8DtqaDyF4AEJnt62bDBOkydToDpOYkxJha3QB02zncPkASXQ9Ye0TsMtiEMu6aLoD7FeiGl1hcf~P4oARUNs8OiUVyiLSys83UjvGvi-31RYCR2OUWUKVBaiJ0dFGgp~7w__') center/cover no-repeat;
@@ -310,6 +367,7 @@ main {
         justify-content: center;
         align-items: center;
         padding: 20px;
+        flex-direction: column;
 
         .container {
             max-width: 900px;
@@ -328,8 +386,6 @@ main {
                 text-transform: uppercase;
                 letter-spacing: 2px;
                 color: rgb(158, 122, 65);
-                
-                
             }
 
             p {
@@ -359,7 +415,6 @@ main {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                
             }
 
             .card {
@@ -378,7 +433,6 @@ main {
                 }
             }
 
-            // Animation for selected carousel items
             #item-1:checked~.cards #song-3,
             #item-2:checked~.cards #song-1,
             #item-3:checked~.cards #song-2 {
@@ -407,6 +461,121 @@ main {
                 }
             }
         }
+    }
+
+    @media (max-width: 1024px) {
+        .sec3 {
+            height: 100vh;
+
+            .karusel {
+                max-width: 600px;
+                height: 350px;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .sec3 {
+            height: 90vh;
+            padding: 15px;
+
+            .par {
+                h2 {
+                    font-size: 2rem;
+                }
+
+                p {
+                    font-size: 1rem;
+                }
+            }
+
+            .karusel {
+                max-width: 500px;
+                height: 300px;
+            }
+        }
+    }
+
+    @media (max-width: 630px) {
+        .sec3 {
+            .karusel {
+                max-width: 400px;
+                height: 250px;
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        .sec3 {
+         
+            padding: 10px;
+
+            .par {
+                padding: 20px;
+
+                h2 {
+                    font-size: 1.5rem;
+                }
+
+                p {
+                    font-size: 0.9rem;
+                }
+            }
+
+            .karusel {
+                max-width: 100%;
+                height: auto;
+
+                .card {
+                    width: 60%;
+                    height: auto;
+                }
+            }
+        }
+    }
+
+
+
+}
+
+
+@media (max-width: 1200px) {
+    .sec1 .all {
+        gap: 100px;
+    }
+
+
+}
+
+
+@media (max-width: 768px) {
+    .sec1 .all {
+        flex-direction: column;
+        gap: 50px;
+        text-align: center;
+
+        .par h2 {
+            font-size: 40px;
+        }
+
+        .par p {
+            font-size: 16px;
+        }
+    }
+
+
+
+}
+
+
+
+@media (max-width: 576px) {
+    .sec1 .par h2 {
+        font-size: 30px;
+    }
+
+    .sec1 .par p {
+        font-size: 14px;
     }
 
 }

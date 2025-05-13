@@ -7,6 +7,7 @@ import "./index.scss"
 const Potential = () => {
   const { potential, createChat, onlineUsers } = useContext(ChatContext);
   const [userr, setUserr] = useState(null);
+  const [ser, setSer] = useState("")
 
   const { user } = useContext(AuthContext)
 
@@ -14,6 +15,7 @@ const Potential = () => {
 
 
 
+  const searching = potential?.filter((q) => q.name.toLowerCase().trim().includes(ser.toLocaleLowerCase().trim()))
 
 
 
@@ -30,23 +32,26 @@ const Potential = () => {
 
   return (
     <div className="all-users">
+      <input placeholder="search user" onChange={(e) => setSer(e.target.value)} />
 
-      {potential && potential.map((u, index) => (
-        <div>
+      {ser !== "" ? <div className="abc">
+        {potential && searching.map((u, index) => (
+          <div key={index}>
 
-          <div
-            className="user"
-            key={index}
-            onClick={() => createChat(user?._id, u._id)}
-          >
-            <p> {u.name}</p>
-  
+            <div
+              className="user"
 
-            <div className={onlineUsers?.some((user) => user?.userId === u?._id) ? "user-Online" : "offline"}></div>
+              onClick={() => createChat(user?._id, u._id)}
+            >
+              <p> {u.name}</p>
+
+
+              <div className={onlineUsers?.some((user) => user?.userId === u?._id) ? "user-Online" : "offline"}></div>
+            </div>
           </div>
-        </div>
 
-      ))}
+        ))}
+      </div> : false}
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { createContext, useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
+import { jwtDecode } from "jwt-decode";
 
 export const AuthContext = createContext();
 
@@ -11,7 +12,10 @@ const AuthProvider = ({ children }) => {
     name: "",
     email: "",
     password: "",
+    role:"user"
   });
+  const [token, setToken] = useState(localStorage.getItem("user") || null)
+  const [decodedToken, setDecodedToken] = useState(null)
   const [loginInfo, setLoginInfo] = useState({
     name: "",
     password: "",
@@ -19,6 +23,9 @@ const AuthProvider = ({ children }) => {
   const [loginLoading, setLoginLoading] = useState(false);
 
   const navigate = useNavigate(); // ✅ Initialize useNavigate
+
+
+
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -39,19 +46,30 @@ const AuthProvider = ({ children }) => {
     async (e) => {
       e.preventDefault();
       setRegisterLoading(true);
-
+  
       try {
-        const res = await axios.post(
-          `http://localhost:8080/api/user/register`,
-          registerInfo
-        );
-
+        console.log("Registering user with:", registerInfo); // Debugging log
+        
+        const res = await axios.post(`http://localhost:8080/api/user/register`, registerInfo, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+  
+        console.log("Registration successful:", res.data); // Debugging log
+  
+        if (!res.data) {
+          throw new Error("No response data received from the server.");
+        }
+  
         localStorage.setItem("user", JSON.stringify(res.data));
         setUser(res.data);
-
-        navigate("/login"); // ✅ Redirect to login page after successful registration
+        // navigate("/login");
       } catch (error) {
         console.error("Registration error:", error.response?.data || error);
+  
+        // Show error message to the user
+        alert(error.response?.data?.message || "Registration failed! Please try again.");
       } finally {
         setRegisterLoading(false);
       }
@@ -59,22 +77,26 @@ const AuthProvider = ({ children }) => {
     [registerInfo, navigate]
   );
   
-  
+
+
+
 
   const loginUser = useCallback(
     async (e) => {
       e.preventDefault();
       setLoginLoading(true);
-  
+
       try {
         const res = await axios.post(
           `http://localhost:8080/api/user/login`,
           loginInfo
         );
-  
+
         localStorage.setItem("user", JSON.stringify(res.data));
         setUser(res.data);
-  
+
+        if(res.data.banned === true) return alert("you are banned")
+
         navigate("/"); // ✅ Redirects to home after successful login
       } catch (error) {
         console.error("Login error:", error.response?.data || error);
@@ -84,15 +106,25 @@ const AuthProvider = ({ children }) => {
     },
     [loginInfo, navigate]
   );
-  
+
 
   const logoutUser = useCallback(() => {
     localStorage.removeItem("user");
     setUser(null);
     navigate("/login"); // ✅ Redirect to login after logout
   }, [navigate]);
+
+
+
+
+  // console.log(user);
+
+
   
-  
+
+
+
+
 
   return (
     <AuthContext.Provider
@@ -108,6 +140,8 @@ const AuthProvider = ({ children }) => {
         loginInfo,
         updateLoginInfo,
         loginUser,
+        token,
+
       }}
     >
       {children}

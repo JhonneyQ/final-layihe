@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import { ChatContext } from '../chatContext';
 import axios from 'axios';
-import moment from "moment";
 import InputEmoji from "react-input-emoji";
 import "./index.scss";
 import { IoSend } from "react-icons/io5";
+// import Enter from '../enterRoom';
 
 const Box = () => {
     const [get, setGet] = useState([]);
@@ -15,7 +15,7 @@ const Box = () => {
     const messageContainerRef = useRef(null);
 
 
- 
+
 
 
 
@@ -67,6 +67,7 @@ const Box = () => {
     return (
         <div className='head'>
             <h3>{recipientUser?.name}</h3>
+            {/* <Enter/> */}
             
             <div className='message'>
                 <div className='message-container' ref={messageContainerRef}>
@@ -80,7 +81,9 @@ const Box = () => {
                     ))}
                 </div>
                 <div className='inp'>
-                    <InputEmoji value={textMessage} onChange={setTextMessage} cleanOnEnter="input" />
+                    <form className='form'>
+                        <InputEmoji value={textMessage} onChange={setTextMessage} cleanOnEnter="input" />
+                    </form>
                     <button
                         type="submit"
                         className="but"

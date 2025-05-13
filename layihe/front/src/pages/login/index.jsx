@@ -5,7 +5,7 @@ import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  const { loginLoading, loginInfo, updateLoginInfo, loginUser } =
+  const { loginLoading, loginInfo, updateLoginInfo, loginUser, handleLogin } =
     useContext(AuthContext);
 
   return (

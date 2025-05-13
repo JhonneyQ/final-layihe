@@ -96,10 +96,90 @@ const editReels = async (req, res) => {
   }
 };
 
+
+const like = async (req, res) => {
+  try {
+    const { userId } = req.body;
+    const { reelId } = req.body;
+
+
+    if (userId === reelId) {
+      return res.status(400).json({ message: "You can't follow yourself!" });
+    }
+
+
+
+    await ReelBlog.updateOne(
+      { _id: reelId },
+      { $addToSet: { likers: userId } }
+    );
+
+    res.status(200).json({ message: "User followed successfully!" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
+const unlike = async (req, res) => {
+  try {
+    const { userId } = req.body;
+    const { reelId } = req.body;
+
+
+
+    await ReelBlog.updateOne(
+      { _id: reelId },
+      { $pull: { likers: userId } }
+    );
+
+    res.status(200).json({ message: "User unfollowed successfully!" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
+
+const addComment = async (req, res) => {
+  try {
+    const { reelId, text, userId } = req.body;
+     // Assuming you have authentication middleware
+
+    console.log("Request Body:", req.body); // Log the request payload
+
+    if (!reelId || !userId || !text) {
+      console.error("Missing required fields:", { reelId, text });
+      return res.status(400).json({ success: false, message: "Missing required fields." });
+    }
+
+    const reel = await ReelBlog.findById(reelId);
+    if (!reel) {
+      console.error("Reel not found for ID:", reelId);
+      return res.status(404).json({ success: false, message: "Reel not found." });
+    }
+
+    // Add the new comment
+    
+    reel.comments.push({ user: userId, text: text });
+
+    await reel.save();
+   
+    res.status(200).json({ success: true, message: "Comment added!",data:reel.comments });
+  } catch (error) {
+    console.error("Error in addComment:", error); // Log the full error
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+
 module.exports = {
   uploadReel,  // ✅ Fixed missing export
   getAllReels,
   getReelsById,
   deleteReels,
   editReels,
+  like,
+  unlike,
+  addComment
 };

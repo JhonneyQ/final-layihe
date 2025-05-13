@@ -1,10 +1,242 @@
-.App{
+.App {
     height: 100vh;
     display: flex;
     align-items: center;
-    .vid{
- 
+    justify-content: center; // Center content horizontally
+
+    .all {
+        display: flex;
+        position: relative;
+        align-items: center;
+
+        width: 100%;
+        gap: 20px;
+
+        .comments-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(59, 59, 59, 0.8);
+            color: white;
+            padding: 15px;
+            z-index: 1000;
+            max-height: 30vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .comments-list {
+            flex: 1;
+            align-items: center;
+            overflow-y: auto;
+            margin-bottom: 10px;
+
+            .comment-avatar {
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .comment {
+                padding: 10px 0;
+                flex: 1;
+                align-items: center;
+                overflow-y: auto;
+
+                p {
+
+
+                    text-align: center;
+                }
+
+            }
+        }
+
+        .comment-user {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 8px;
+
+
+
+            .comment-content {
+                flex: 1;
+
+                .username {
+                    font-weight: 600;
+                    margin-right: 8px;
+                }
+
+                p {
+                    margin: 4px 0 0;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .comment-input {
+            display: flex;
+            gap: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #444;
+
+            input {
+                flex: 1;
+                padding: 8px;
+                border-radius: 20px;
+                border: none;
+                background: #333;
+                color: white;
+            }
+
+            button {
+                background: #0095f6;
+                color: white;
+                border: none;
+                padding: 8px 15px;
+                border-radius: 20px;
+                cursor: pointer;
+
+                &:disabled {
+                    background: #00476a;
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        .context {
+            color: white;
+            position: absolute;
+            bottom: 23%;
+            left: 5%;
+        }
+
+        a {
+            color: white;
+            position: absolute;
+            right: -12%;
+
+        }
+
+        .user {
+            position: absolute;
+            color: white;
+            top: 35%;
+            display: flex;
+            left: 1%;
+            gap: 20px;
+            align-items: center;
+
+            img {
+                width: 10%;
+                border-radius: 50%;
+            }
+        }
+
+        .actions {
+            display: flex;
+            gap: 30px;
+            flex-direction: column;
+            position: absolute;
+            right: 2%;
+            bottom: 40%;
+
+            button {
+                padding: 10px;
+                font-size: 25px;
+                background-color: transparent;
+                border: none;
+                color: white;
+                cursor: pointer; // Add pointer cursor for buttons
+            }
+        }
+    }
+
+    .vid {
+        display: flex;
         justify-content: center;
-  
+        align-items: center; // Center video vertically
+        width: 100%; // Ensure video container takes full width
+
+        .reel {
+            max-width: 800px; // Set maximum width for the video
+            width: 100%; // Make video responsive
+            height: auto; // Maintain aspect ratio
+        }
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .App {
+        .all {
+            .actions {
+                right: 30%; // Adjust position for smaller screens
+                bottom: 40%; // Adjust position for smaller screens
+
+                button {
+                    font-size: 20px; // Reduce button font size
+                }
+            }
+        }
+
+        .vid {
+            .reel {
+                max-width: 600px; // Reduce maximum width for tablets
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .App {
+        .all {
+            flex-direction: column; // Stack elements vertically
+            gap: 10px; // Reduce gap between elements
+
+            .actions {
+                top: 20%;
+                right: 10%;
+                position: absolute; // Reset absolute positioning
+                flex-direction: row; // Align buttons horizontally
+                justify-content: center; // Center buttons
+                gap: 20px; // Reduce gap between buttons
+
+
+                button {
+                    font-size: 18px; // Further reduce button font size
+                }
+            }
+        }
+
+        .vid {
+            .reel {
+                max-width: 90%; // Make video take 90% of the screen width
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .App {
+        .all {
+            .actions {
+                gap: 15px; // Further reduce gap between buttons
+
+                button {
+                    font-size: 16px; // Further reduce button font size
+                    padding: 8px; // Reduce button padding
+                }
+            }
+        }
+
+        .vid {
+            .reel {
+                max-width: 100%; // Make video take full width on mobile
+            }
+        }
     }
 }

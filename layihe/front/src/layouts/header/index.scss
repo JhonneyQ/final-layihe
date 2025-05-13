@@ -1,91 +1,133 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
-
-
-
-
 header {
-    background-color: rgba(12, 12, 12, 0.18);
-    height: 60px;
-    position: fixed;
-    z-index: 10;
-    width: 100%;
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
+  background-color: #1e1e1e;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
 
-        .all {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 
-            .icon {
-                color: rgb(187, 145, 77);
-                font-size: 25px;
+    .all {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+
+      .icon {
+        font-size: 2rem;
+        color: #c8aa6e;
+      }
+
+      nav {
+        ul {
+          display: flex;
+          gap: 20px;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+
+          li {
+            a {
+              color: #fff;
+              text-decoration: none;
+              font-weight: bold;
+              transition: color 0.3s ease;
+
+              &:hover {
+                color: #c8aa6e;
+              }
             }
-
-            /* Play Button Container */
-            .play-button {
-                width: 60px;
-                /* Width of the button */
-                height: 20px;
-                /* Height of the button */
-                background-color: #1e90ff;
-                /* Bright blue color */
-                border: 2px solid #1e90ff;
-                /* Border color */
-                /* Slightly rounded corners */
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                transition: background-color 0.3s ease, transform 0.2s ease;
-                font-family: 'Helvetica', sans-serif;
-                /* Font style */
-                font-size: 12px;
-                /* Font size */
-                font-weight: bold;
-                /* Bold text */
-                color: white;
-                /* Text color */
-                text-transform: uppercase;
-
-                /* Makes the text uppercase */
-                &:hover {
-                    background-color: #0077cc;
-                    /* Darker blue on hover */
-                    transform: scale(1.05);
-                }
-
-                &:active {
-                    background-color: #005bb5;
-                    /* Even darker blue */
-                    transform: scale(0.95);
-                }
-            }
-
-        
-
-            nav {
-
-                ul {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 20px;
-
-                    li {
-                        a {
-                            color: rgb(187, 145, 77);
-                            font-family: "Roboto", serif;
-                            font-weight: bold;
-                            font-size: 15px;
-                        }
-                    }
-                }
-            }
+          }
         }
+      }
+
+      .play-button {
+        background-color: #c8aa6e;
+        color: #1e1e1e;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #b89a5e;
+        }
+      }
+
+      .menu-toggle {
+        display: none;
+        font-size: 2rem;
+        color: #fff;
+        cursor: pointer;
+      }
     }
+  }
+}
 
+// Responsive Styles
+@media (max-width: 750px) {
+  header {
+    .container {
+      .all {
+        .menu-toggle {
+          display: block;
+        }
 
+        nav {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background-color: #1e1e1e;
+          padding: 10px 0;
 
+          ul {
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+
+            li {
+              padding: 10px 0;
+            }
+          }
+        }
+
+        nav.active {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    .container {
+      .all {
+        .icon {
+          font-size: 1.5rem;
+        }
+
+        nav {
+          ul {
+            li {
+              a {
+                font-size: 0.9rem;
+              }
+            }
+          }
+        }
+
+        .play-button {
+          padding: 8px 16px;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}

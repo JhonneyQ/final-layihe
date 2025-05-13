@@ -9,11 +9,11 @@ import { ChatContext } from "../../components/chatContext";
 import ChatUsers from "../../components/Chat";
 import Potential from "../../components/potentialChat";
 import Box from "../../components/box";
-import InputEmoji from "react-input-emoji"
-import Moments from "../reels";
+import { LuUpload } from "react-icons/lu";
+
 
 const Profile = () => {
-  const [sort, setSort] = useState("def");
+  // const [sort, setSort] = useState("def");
   const [change, setChange] = useState("def");
   const [get, setGet] = useState([]);
   const [userr, setUserr] = useState(null); // ✅ Set initial state to null
@@ -23,6 +23,11 @@ const Profile = () => {
   const [following, setFollowing] = useState([])
   const [followers, setFollowers] = useState([])
   const [allUsers, setAllUsers] = useState([])
+  const [fols, setFols] = useState(Number)
+  const [foling, setFoling] = useState(Number)
+
+
+
 
 
 
@@ -46,22 +51,7 @@ const Profile = () => {
     getFollowers()
   }, [get])
 
-  const getUser = async () => {
-    if (!user?._id) return;
 
-
-    const res = await axios(`http://localhost:8080/api/user`);
-
-    setAllUsers(res.data)
-
-  };
-
-  useEffect(() => {
-
-
-    getUser()
-
-  }, [user])
 
 
   const filter = allUsers.filter((q) => {
@@ -70,6 +60,7 @@ const Profile = () => {
   const filterr = allUsers.filter((q) => {
     return followers.includes(q?._id);
   });
+
 
 
 
@@ -99,6 +90,8 @@ const Profile = () => {
     try {
       const res = await axios.get(`http://localhost:8080/api/user/find/${userr._id}`);
       setGet(res.data);
+      setFols(res.data.followers)
+      setFoling(res.data.following)
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
@@ -106,7 +99,7 @@ const Profile = () => {
 
 
 
-  const foll = async(id) => {
+  const foll = async (id) => {
     try {
       const res = await axios.post("http://localhost:8080/api/user/follow", { userId: id, followerId: user?._id })
     } catch (error) {
@@ -117,7 +110,7 @@ const Profile = () => {
 
   }
 
-  const unfoll = async(id) => {
+  const unfoll = async (id) => {
     try {
       const res = await axios.post("http://localhost:8080/api/user/unfollow", { userId: id, followerId: user?._id })
     } catch (error) {
@@ -126,7 +119,22 @@ const Profile = () => {
     }
   }
 
+  const getUser = async () => {
+    if (!user?._id) return;
 
+
+    const res = await axios(`http://localhost:8080/api/user`);
+
+    setAllUsers(res.data)
+
+  };
+
+  useEffect(() => {
+
+
+    getUser()
+
+  }, [user, foll, unfoll])
 
 
 
@@ -173,23 +181,15 @@ const Profile = () => {
         <nav className="nav__cont">
           <ul className="nav">
             <li className="nav__items">
-              <IoMdSettings />
+              <LuUpload />
               <Link to="/post" >Post</Link>
             </li>
 
             <li className="nav__items">
-              <IoIosExit />
-              <div className="logout">
-                {user && <Link onClick={logoutUser}>Logout</Link>}
-                <div className="logreg">
-                  {!user && (
-                    <>
-                      <Link to={"/login"}>Login</Link>
-                      <Link to={"/register"}>Register</Link>
-                    </>
-                  )}
-                </div>
-              </div>
+
+              <IoIosExit className="ic" />
+              {user && <button onClick={logoutUser}>Logout</button>}
+
             </li>
 
             {/* <li className="nav__items">
@@ -232,12 +232,26 @@ const Profile = () => {
       </div>
       <div className="container">
         <div className="all">
+          {/* <VideoPlayer />
+          <Sidebar>
+            <Notifications/>
+          </Sidebar> */}
 
           <div className="prof">
             <div className="pro">
               <div className="nag">
                 <img src={get.image} />
                 <span>{get.name}</span>
+                <div className="count">
+                  <div className="nam">
+                    <h3>followers</h3>
+                    <p>{fols.length}</p>
+                  </div>
+                  <div className="nam">
+                    <h3>following</h3>
+                    <p>{foling.length}</p>
+                  </div>
+                </div>
               </div>
               <p>{get.bio}</p>
 
@@ -245,7 +259,7 @@ const Profile = () => {
           </div>
           <div className="add"></div>
           <div className="cardSelect">
-            <button onClick={() => setChange("moments")}>Moments</button>
+            <button onClick={() => setChange("moments")}>Chat</button>
             <button onClick={() => setChange("followers")}>Following</button>
             <button onClick={() => setChange("following")}>Followers</button>
           </div>

@@ -4,6 +4,10 @@ import "./index.scss"
 
 
 const Moments = () => {
+
+
+
+
   return (
     <section className='rel'>
       <Reels className="vid"/>

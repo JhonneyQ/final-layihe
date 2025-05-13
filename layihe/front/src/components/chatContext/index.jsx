@@ -17,9 +17,11 @@ const ChatProv = ({ children, user }) => {
     const [newMessage, setNewMessage] = useState(null)
     const [socket, setSocket] = useState(null)
     const [onlineUsers, setOnlineUsers] = useState([])
+    const [ongoingCall , setOngoingCall] = useState(null)
 
 
     console.log("onlineUsers", onlineUsers);
+
     
 
     useEffect(() => {
